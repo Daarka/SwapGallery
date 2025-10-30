@@ -127,32 +127,34 @@ body {
     grid-auto-flow: row;
     /* FULL PAGE GUTTERS */
     gap: 0px;
-    margin-left: 6.5vw;
-    padding-right: 5vw;
     z-index: 1;
+    max-width: 100%;
+    padding-right: 100;
   }
 
 /* GUY I LIKE */
     #gallery .cs-item {
+        background-color: var(--backgroundColor);
+        box-shadow: 0 0 8px 2px var(--shadowColor); 
         justify-content: center;
-        max-width: clamp(655px, 655px, 655px);
-        max-height: clamp(320px,320px,320px);
+        /*display: grid;*/
+        display:inline-grid;
+        /* max-width: clamp(655px, 655px, 655px); */
+        aspect-ratio: 1 / 0.52;
+        width: 100%;
+        max-width: 560px;
         /* PADDING (CONTAINER) */
         padding: 1vw;
-        background-color: var(--backgroundColor);
+        padding-left: 1vw;
+        padding-bottom: 0vw;
+        margin-top: 0.75vw; 
+        margin-right: 0.25vw;
         /* CORNER ROUNDING (CONTAINER) */
         border-radius: 16px;
-        /*display: grid;*/
         /* IMG2IMG GUTTERS */
         column-gap: 8px;
         /* IMG BOTTOM MARGIN */
-        row-gap: 1vw;
-        display:inline-grid;
-        margin-top: 0.75vw; 
-        margin-right: 0.25vw;
-        padding-left: 1vw;
-        padding-bottom: 0vw;
-        box-shadow: 0 0 8px 2px var(--shadowColor);
+        row-gap: 1vw;      
     }
 
 /* PAIR TITLE */
@@ -166,13 +168,16 @@ body {
     grid-column: span 2;
   }
   #gallery .cs-picture-group {
-    height: clamp(267px, 267px, 267px);
-    width: clamp(267px, 267px, 267px);
+    /* height: clamp(267px, 267px, 267px);
+    width: clamp(267px, 267px, 267px); */
     overflow: hidden;
     border-radius: 1rem;
     grid-column: span 1;
     position: relative;
     box-shadow: 0 0 0px 2px var(--outlineColor);
+    aspect-ratio: 2 / 1.25;
+    height: 123%;
+    width: 100%;
   }
   #gallery .cs-picture {
     width: 100%;
@@ -197,10 +202,17 @@ body {
     color: var(--textButton);
     border: 1px solid var(--outlineButton);
     border-radius: 1.875rem;
+    /* 
     position: absolute;
-    bottom: 14.8rem;
+    bottom: 14.8rem; 
     left: 0.3rem;
+    */
     backdrop-filter: blur(8px);
+    position: absolute;
+    top: 0.4rem;
+    left: 0.95rem;
+    margin-left: -10px;
+    transform: none;
   }
   a {
     color: var(--textButton);
@@ -269,10 +281,34 @@ body {font-family: "Playpen Sans";}
 /* Style the tab content */
 .tabcontent {
   float: left;
-  padding: 0px 10px;
+  padding: 0px 0px;
   width: 100%;
   border-left: none;
+  margin-left: 100px;
+  max-width: 100%;
+  width: 100%;
 }
+
+/* 
+@media only screen and (max-width: 768px) {
+  .tabcontent {
+    margin-left: 0;
+    max-width: 100%;
+  }
+  
+  .tab {
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+  
+  .tab button {
+    display: inline-block;
+    width: auto;
+    padding: 10px 15px;
+  } 
+}
+*/
 
 </style>
 </head>
