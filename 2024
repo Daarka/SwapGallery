@@ -1,0 +1,1596 @@
+<html>
+<head>
+    <link href='https://fonts.googleapis.com/css?family=Playpen Sans' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+:root {
+    /* Add these styles to your global stylesheet, which is used across all site pages. You only need to do this once. All elements in the library derive their variables and base styles from this central sheet, simplifying site-wide edits. For instance, if you want to modify how your h2's appear across the site, you just update it once in the global styles, and the changes apply everywhere. */
+    --textLight: #782B42;
+    --textLightest: #fff0e7;
+    --textDark: #4B1C2C;
+    --textButton: #fff9f0;
+    --backgroundClear: #FFFFFF00; /* FFFFFF00 */
+    --backgroundColor: #FFEAC952;
+    --backgroundColorSolid: #f5dbc3;
+    --backgroundopaque: #e0beb0;
+    --backgroundButton: #22171b49;
+    --outlineButton: #22131849;
+    --outlineBrighter: #f89c9649;
+    --shadowColor: #4A1B2B59;
+    --outlineColor: #8b6166;
+    --sidebarColor: #D7947B5E;
+    --sidebarHighlight: #ECCCAF;
+    --sidebarHighlightLess: #ecccaf7c;
+    --Raspberry: #782B42;
+    --textBrown: #66302c;
+    /* 31px - 49px */
+    --textsizeBig: clamp(1.9375rem, 3.9vw, 3.0625rem);
+    --textsizeReg: 1rem;
+    --sectionPadding: 0px;
+}
+hr {
+  border-color: #ffc9c0;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+*, *:before, *:after {
+    /* prevents padding from affecting height and width */
+    box-sizing: border-box;
+}
+.cs-title {
+    font-size: var(--textsizeBig);
+    font-weight: 900;
+    line-height: 1.2em;
+    text-align: inherit;
+    max-width: 43.75rem;
+    margin: 0 0 1rem 0;
+    color: var(--textLight);
+    position: relative;
+}
+.cs-text {
+    font-size: var(--textsizeReg);
+    line-height: 1.5em;
+    text-align: inherit;
+    width: 100%;
+    max-width: 40.625rem;
+    margin: 0;
+    color: var(--textDark);
+}
+/* Mobile - 360px */
+@media only screen and (min-width: 0rem) {
+  #gallery {
+    padding: var(--sectionPadding);
+    background-color: var(--backgroundClear);
+    /* stops the cs-graphics from causing an overflow */
+    overflow: scroll;
+    position: relative;
+    height: 100%;
+  }
+  #gallery .cs-container {
+    width: 100%;
+    max-width: 100%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    height: 100%;
+  }
+  #gallery .cs-content {
+    text-align: center;
+    width: 100%;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1;
+  }
+  #gallery .cs-title {
+    max-width: 25ch;
+    margin: 0;
+  }
+  #gallery .cs-button-solid {
+    font-size: 1rem;
+    font-weight: 700;
+    font-family: 'Playpen Sans';
+    /* 46px - 56px */
+    line-height: clamp(2.875em, 5.5vw, 3.5em);
+    text-align: center;
+    text-decoration: none;
+    min-width: 9.375rem;
+    margin: 0;
+    /* prevents padding from adding to the width */
+    box-sizing: border-box;
+    padding: 0 1.5rem;
+    background-color: var(--backgroundColor);
+    overflow: hidden;
+    color: #fff;
+    border: none;
+    border-radius: 0.25rem;
+    display: inline-block;
+    position: relative;
+    z-index: 1;
+    transition: color 0.3s;
+  }
+  #gallery .cs-button-solid:before {
+    content: "";
+    width: 0;
+    height: 100%;
+    background: #000;
+    opacity: 1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transition: width 0.3s;
+  }
+  #gallery .cs-button-solid:hover {
+    color: #fff;
+  }
+  #gallery .cs-button-solid:hover:before {
+    width: 100%;
+  }
+  #gallery .cs-gallery {
+    width: 100%;
+    /* display: grid;*/
+    grid-auto-flow: row;
+    /* FULL PAGE GUTTERS */
+    gap: 0px;
+    z-index: 1;
+    max-width: 100%;
+    padding-right: 100;
+  }
+
+/* GUY I LIKE */
+    #gallery .cs-item {
+        background-color: var(--backgroundColor);
+        box-shadow: 0 0 8px 2px var(--shadowColor); 
+        justify-content: center;
+        /*display: grid;*/
+        display:inline-grid;
+        /* max-width: clamp(655px, 655px, 655px); */
+        aspect-ratio: 1 / 0.52;
+        width: 100%;
+        max-width: 560px;
+        /* PADDING (CONTAINER) */
+        padding: 1vw;
+        padding-left: 1vw;
+        padding-bottom: 0vw;
+        margin-top: 0.75vw; 
+        margin-right: 0.25vw;
+        /* CORNER ROUNDING (CONTAINER) */
+        border-radius: 16px;
+        /* IMG2IMG GUTTERS */
+        column-gap: 8px;
+        /* IMG BOTTOM MARGIN */
+        row-gap: 1vw;      
+    }
+
+/* MODAL VERSIONS */
+#gallery .cs-itemModal {
+        background-color: var(--backgroundColor);
+        box-shadow: 0 0 8px 2px var(--shadowColor); 
+        justify-content: center;
+        /*display: grid;*/
+        display:inline-grid;
+        /* max-width: clamp(655px, 655px, 655px); */
+        aspect-ratio: 1 / 0.52;
+        width: 100%;
+        max-width: 100%;
+        /* PADDING (CONTAINER) */
+        padding: 1vw;
+        padding-left: 1vw;
+        padding-bottom: 0vw;
+        margin-top: 0.75vw; 
+        margin-right: 0.25vw;
+        /* CORNER ROUNDING (CONTAINER) */
+        border-radius: 16px;
+        /* IMG2IMG GUTTERS */
+        column-gap: 8px;
+        /* IMG BOTTOM MARGIN */
+        row-gap: 1vw;      
+    }
+
+#gallery .cs-item2 {
+        background-color: var(--backgroundColorSolid);
+        box-shadow: 0 0 8px 2px var(--shadowColor); 
+        justify-content: center;
+        /*display: grid;*/
+        /* max-width: clamp(655px, 655px, 655px); */
+        width: 100%;
+        max-width: 100%;
+        /* PADDING (CONTAINER) */
+        padding-left: 2.5vw;
+        padding-right: 2.5vw;
+        padding-bottom: 1.9vw;
+        padding-top: 1.9vw;
+        margin-top: 0.75vw; 
+        margin-right: 0.25vw;
+        /* CORNER ROUNDING (CONTAINER) */
+        border-radius: 16px;
+        /* IMG2IMG GUTTERS */
+        column-gap: 8px;
+        /* IMG BOTTOM MARGIN */
+        row-gap: 1vw;      
+        line-height: 1rem;
+        font-family: Arial;
+    }
+
+/* PAIR TITLE */
+  #gallery .cs-item-text {
+    font-size: 16px;
+    font-weight: 700;
+    font-family: 'Playpen Sans';
+    line-height: 1.2em;
+    margin: 0;
+    color: var(--textLight);
+    grid-column: span 2;
+  }
+  #gallery .cs-picture-group {
+    /* height: clamp(267px, 267px, 267px);
+    width: clamp(267px, 267px, 267px); */
+    overflow: hidden;
+    border-radius: 1rem;
+    grid-column: span 1;
+    position: relative;
+    box-shadow: 0 0 0px 2px var(--outlineColor);
+    aspect-ratio: 2 / 1.25;
+    height: 123%;
+    width: 100%;
+  }
+  #gallery .cs-picture {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+  #gallery .cs-picture img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+/* BEFORE/AFTER FLOATING ICONS */
+  #gallery .cs-tag {
+    font-size: 0.875rem;
+    line-height: 1.3em;
+    font-family: 'Arial';
+    padding: 0.15rem 0.35rem;
+    background: var(--backgroundButton);
+    color: var(--textLightest);
+    border: 1px solid var(--outlineButton);
+    border-radius: 1.875rem;
+    /* 
+    position: absolute;
+    bottom: 14.8rem; 
+    left: 0.3rem;
+    */
+    backdrop-filter: blur(8px);
+    position: absolute;
+    top: 0.4rem;
+    left: 0.95rem;
+    margin-left: -10px;
+    transform: none;
+  }
+  a {
+    color: var(--textButton);
+    text-decoration:none;
+    }
+
+}
+/* Tablet - 600px */
+@media only screen and (min-width: 37.5rem) {
+  #gallery .cs-content {
+    text-align: left;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+  #gallery .cs-gallery {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+}
+/* Desktop - 1600px */
+@media only screen and (min-width: 100rem) {
+
+}
+
+* {box-sizing: border-box}
+body {font-family: "Playpen Sans";}
+
+/* Style the tab */
+.tab {
+  float: left;
+  border: 1px solid var(--textDark);
+  background-color: var(--sidebarColor);
+  width: 100px;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 1;
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+  display: block;
+  background-color: inherit;
+  color: var(--textDark);
+  padding: 10px 0px;
+  width: 100%;
+  border: none;
+  outline: none;
+  text-align: center;
+  cursor: pointer;
+  transition: 0.3s;
+  font-size: 17px;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: var(--sidebarHighlightLess);
+}
+
+/* Create an active/current "tab button" class */
+.tab button.active {
+  background-color: var(--sidebarHighlight);
+}
+
+/* Style the tab content */
+.tabcontent {
+  float: left;
+  padding: 0px 0px;
+  width: 100%;
+  border-left: none;
+  margin-left: 100px;
+  max-width: 100%;
+  width: 100%;
+}
+
+/* 
+@media only screen and (max-width: 768px) {
+  .tabcontent {
+    margin-left: 0;
+    max-width: 100%;
+  }
+  
+  .tab {
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+  
+  .tab button {
+    display: inline-block;
+    width: auto;
+    padding: 10px 15px;
+  } 
+}
+*/
+
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: var(--backgroundButton); /* Fallback color */
+  background-color: var(--backgroundButton); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: var(--backgroundopaque);
+  margin: auto;
+  margin-bottom: 100px;
+  margin-top: -50px;
+  padding: 15px;
+  border: 1px solid var(--outlineButton);
+  width: 95%;
+  max-width: 750px;
+  height: auto;
+  border-radius: 1.875rem;
+  /* padding-left: 25px; */
+  font-size: 0.95rem;
+  color: var(--textDark);
+}
+
+/* The Close Button */
+.close {
+  float: right;
+  position: absolute;
+  margin-top: -34;
+  margin-left: 40;
+  width: 80%;
+  max-width: 45rem;
+  font-size: 2rem;
+  font-weight: bold;
+  background: var(--backgroundClear);
+  color: var(--Raspberry);
+  text-align: right;
+  z-index: 1;
+}
+
+.closeButton {
+  font-size: 2rem;
+  font-weight: bold;
+  background: var(--Raspberry);
+  color: var(--backgroundopaque);
+  border: 1px solid var(--outlineButton);
+  border-radius: 1.875rem;
+  padding-left: 13;
+  padding-right: 13;
+}
+
+.close:hover,
+.close:focus {
+  color: var(--outlineColor);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+  #gallery .cs-tagButton {
+    font-size: 1rem;
+    line-height: 1.3em;
+    font-family: 'Playpen Sans';
+    padding: 0.15rem 0.35rem;
+    background: var(--backgroundopaque);
+    color: var(--textBrown);
+    border: 1px solid var(--backgroundopaque);
+    border-radius: 1.875rem; 
+    /*
+    bottom: 14.8rem; 
+    */
+    backdrop-filter: blur(8px);
+    position: absolute;
+    /*
+    top: 0.4rem;
+    left: 0.95rem;
+    margin-left: -10px;
+    */
+    transform: none;
+  }
+
+  .DescriptionButton{
+    font-size: 0.875rem;
+    line-height: 1.3em;
+    font-family: 'Playpen Sans';
+    padding: 0.15rem 0.35rem;
+    background: #782b421c;
+    color: var(--textLightest);
+    border: 1px solid var(--outlineBrighter);
+    border-radius: 1.875rem;
+    backdrop-filter: blur(8px);
+    position: absolute;
+    bottom: 0.4rem;
+    left: 0.95rem;
+    margin-left: -10px;
+    transform: none;
+  }
+
+</style>
+</head>
+<body>
+<section id="gallery">
+<div class="cs-container">
+<div class="content">
+<div class="cs-content">
+
+ <div class="tab">
+<!--<button class="tablinks" onclick="openCity(event, '2025')"><img loading="eager"src="https://i.gyazo.com/ea80b06c6db8770fc0df9b799feb540b.png"></button>-->
+  <button class="tablinks" onclick="openCity(event, '2024')"id="defaultOpen"><img loading="eager"src="https://i.gyazo.com/b44334e2bdc97c2d948cea650966daa8.png"></button>
+  <button class="tablinks" onclick="openCity(event, '2023')"><img loading="eager"src="https://i.gyazo.com/d3ac56e2855b096e6dfbd01aa9971f54.png"></button>
+  <button class="tablinks" onclick="openCity(event, '2022')"><img loading="eager"src="https://i.gyazo.com/4dc7f4235d8d920502ed821b615a499e.png"></button>
+  <button class="tablinks" onclick="openCity(event, '2021')"><img loading="eager"src="https://i.gyazo.com/c8a2fe3311946874a184e6a94caa5519.png"></button>
+  <button class="tablinks" onclick="openCity(event, '2021S')"><img loading="eager"src="https://i.gyazo.com/e5da83607be19f001d94faafe8b27589.png"></button>
+</div>
+
+<div id="2024" class="tabcontent">
+<div class="cs-gallery" align="center">
+<!-- [01]DaarkaArts <- CypressDice -->
+<div class="cs-item" align="left">
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/0ef0776018cc0d77bbda9c479e74f5c6.png"><img src="https://i.gyazo.com/0ef0776018cc0d77bbda9c479e74f5c6.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/DaarkaArts">@DaarkaArts</a></span>
+										<button class="DescriptionButton" data-modal="Modal2024DaarkaArts">Details</button>
+                </div>
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/c460ecd96a2312b4543d36049feb51d6.png"><img src="https://i.gyazo.com/c460ecd96a2312b4543d36049feb51d6.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/CypressDice">@CypressDice</a></span>
+                </div>
+            <p class="cs-item-text"></p>
+            </div>
+<div id="Modal2024DaarkaArts" class="modal">
+         <div class="modal-content">
+          <span class="close"><span class="closeButton">&times;</span></span>
+        <div class="cs-itemModal" align="left">
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/0ef0776018cc0d77bbda9c479e74f5c6.png"><img src="https://i.gyazo.com/0ef0776018cc0d77bbda9c479e74f5c6.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/DaarkaArts">@DaarkaArts</a></span>
+                </div>
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/c460ecd96a2312b4543d36049feb51d6.png"><img src="https://i.gyazo.com/c460ecd96a2312b4543d36049feb51d6.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/CypressDice">@CypressDice</a></span>
+                </div>
+            <p class="cs-item-text"></p>
+        </div>
+            <div class="cs-item2" align="left"><span class="cs-tagButton"><b>Moodboard Description</b></span></br>
+            <p>Lonely and tired in a world between dreams and the waking. The shadows are an old friend, but a silent one. A yawning void of starvation, a slip, and a relapse ends a life—taking a fragment of your humanity with it, and leaving behind only bloodstains. It is always hopeless, but you can only ever try to persevere, to find balance where you cannot find a cure. And when that bloody monstrosity becomes too much of who you are... you find your humanity again in the sentimental art of glass, striving to embody that serene beauty and imagining better days within the sleepy hues. Imagining dreams suspended in those swirls and fractals that are filled with love. This, too—like all the dreams and nightmares that came before—shall pass. Must pass. You have to believe that it is possible for someone like you to know peace. Until then... you will dream of it in the colors of glass.</p></div>
+		</div>
+</div>
+<!-- / [01]DaarkaArts <- CypressDice -->
+
+<!-- [17]InfernalFoundry <- M3_Dice -->
+<div class="cs-item" align="left">
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/76adea036a5ad1ebb19a20d1ffd886cc.jpg"><img src="https://i.gyazo.com/76adea036a5ad1ebb19a20d1ffd886cc.jpg"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/InfernalFoundry">@InfernalFoundry</a></span>
+										<button class="DescriptionButton" data-modal="Modal2024InfernalFoundry">Details</button>
+                </div>
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/thumb/1000/26ccaa24b333122a41612f7760a506d3-png.jpg"><img src="https://i.gyazo.com/thumb/1000/26ccaa24b333122a41612f7760a506d3-png.jpg"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/M3_Dice">@M3_Dice</a></span>
+                </div>
+            <p class="cs-item-text"></p>
+            </div>
+<div id="Modal2024InfernalFoundry" class="modal">
+         <div class="modal-content">
+          <span class="close"><span class="closeButton">&times;</span></span>
+        <div class="cs-itemModal" align="left">
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/76adea036a5ad1ebb19a20d1ffd886cc.jpg"><img src="https://i.gyazo.com/76adea036a5ad1ebb19a20d1ffd886cc.jpg"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/InfernalFoundry">@InfernalFoundry</a></span>
+                </div>
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/thumb/1000/26ccaa24b333122a41612f7760a506d3-png.jpg"><img src="https://i.gyazo.com/thumb/1000/26ccaa24b333122a41612f7760a506d3-png.jpg"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/M3_Dice">@M3_Dice</a></span>
+                </div>
+            <p class="cs-item-text"></p>
+        </div>
+            <div class="cs-item2" align="left"><span class="cs-tagButton"><b>Moodboard Description</b></span></br>
+            <p>Wrought Iron: Twisted into intricate, gothic designs, the wrought iron adds a layer of dark, mysterious craftsmanship, complementing the magical elements.<br><br>Magical Flames: Vivid greens, purples, and crimson flames glow eerily, illuminating the wrought iron and casting twisted shadows.<br><br>Lich or Undead Mage: The central figure, surrounded by arcane symbols and mist, emanates a powerful, cursed presence.<br><br>Tarnished Gold: Interwoven with the wrought iron, the cracked and decayed gold symbolizes forgotten, ancient magic.<br><br>Color Scheme: Deep reds, shadowy blacks, and eerie blues create a cursed, gothic atmosphere filled with dark rituals and ancient magic.</p></div>
+		</div>
+</div>
+<!-- / [17]InfernalFoundry <- M3_Dice -->
+
+<!-- [12]Mirkwood_Dice <- CrystalRole -->
+<div class="cs-item" align="left">
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/0481c102776633a0c55d55fdf9b0778a.jpg"><img src="https://i.gyazo.com/0481c102776633a0c55d55fdf9b0778a.jpg"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/Mirkwood_Dice">@Mirkwood_Dice</a></span>
+										<button class="DescriptionButton" data-modal="Modal2024Mirkwood_Dice">Details</button>
+                </div>
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/thumb/1000/741e265371880498709942b042bc7903-png.jpg"><img src="https://i.gyazo.com/thumb/1000/741e265371880498709942b042bc7903-png.jpg"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/CrystalRole">@CrystalRole</a></span>
+                </div>
+            <p class="cs-item-text"></p>
+            </div>
+<div id="Modal2024Mirkwood_Dice" class="modal">
+         <div class="modal-content">
+          <span class="close"><span class="closeButton">&times;</span></span>
+        <div class="cs-itemModal" align="left">
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/0481c102776633a0c55d55fdf9b0778a.jpg"><img src="https://i.gyazo.com/0481c102776633a0c55d55fdf9b0778a.jpg"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/Mirkwood_Dice">@Mirkwood_Dice</a></span>
+                </div>
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/thumb/1000/741e265371880498709942b042bc7903-png.jpg"><img src="https://i.gyazo.com/thumb/1000/741e265371880498709942b042bc7903-png.jpg"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/CrystalRole">@CrystalRole</a></span>
+                </div>
+            <p class="cs-item-text"></p>
+        </div>
+            <div class="cs-item2" align="left"><span class="cs-tagButton"><b>Moodboard Description</b></span></br>
+            <p>Made for my dhampir Cyprian this moodboard features a variety of both elegance and dark, moody pictures. Gold bars and textures amongst lit candles in a dark room, bones and hands covered in blood, the picture of a young man in the grip of a shadow creature. A few bats here and there and some fancy, slightly edgy fashion pics to suit his somewhat noble upbringing. A color palette of reds, gold, black and bone white.</p></div>
+		</div>
+</div>
+<!-- / [12]Mirkwood_Dice <- CrystalRole -->
+
+
+<!-- [2024_24] ProfRoseCreations <- Dice_Garden -->
+<div class="cs-item" align="left" title="At the top of a grassy hill, there is a cottage, overgrown with moss and vines. When the door opens, a cloud of smoke bursts forth first, and from the smell you can be certain this is not from any fire. Then you see the witch, Althanna. The first thing you notice about her is her hair. It goes down past her knees and is full of plants and twigs. Atop the mess of hair rests Stanley, the ever-faithful raven, staring at you with white eyes. Althanna’s eyes are glassy, with purple irises ringed with red. Rainbows shine through beaded curtains and suncatchers throughout the room beyond. She invites you in right away and offers you some tea, a hit from her handmade, rainbow, blown-glass bong, and a cookie. At first you feel ill-at-ease in this strange space, filled to the rafters with plants and animal bones and odd knickknacks. But, once you’ve spent a few minutes in the witch’s cottage, smoking from the bong, drinking tea, and eating cookies (both of which seem to have been spiked with some sort of drug or magic or both) you cannot help but feel utterly, blissfully, relaxed.">
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/83c694ed4968e78d0cc34d9b1f1d90b6.png"><img src="https://i.gyazo.com/83c694ed4968e78d0cc34d9b1f1d90b6.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/ProfRoseCreations">@ProfRoseCreations</a></span>
+                </div>
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/thumb/1000/4df27c4b6d25ae4460220a7fe6031b22-png.jpg"><img src="https://i.gyazo.com/thumb/1000/4df27c4b6d25ae4460220a7fe6031b22-png.jpg"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/Dice_Garden">@Dice_Garden</a></span>
+                </div>
+            <p class="cs-item-text"></p>
+            </div>
+<!-- / [2024_24] ProfRoseCreations <- Dice_Garden -->
+
+
+<!-- [01]DaarkaArts <- CypressDice -->
+<div class="cs-item" align="left">
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/0ef0776018cc0d77bbda9c479e74f5c6.png"><img src="https://i.gyazo.com/0ef0776018cc0d77bbda9c479e74f5c6.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/DaarkaArts">@DaarkaArts</a></span>
+										<button class="DescriptionButton" data-modal="Modal2024DaarkaArts">Details</button>
+                </div>
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/c460ecd96a2312b4543d36049feb51d6.png"><img src="https://i.gyazo.com/c460ecd96a2312b4543d36049feb51d6.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/CypressDice">@CypressDice</a></span>
+                </div>
+            <p class="cs-item-text"></p>
+            </div>
+                 <!-- MODAL -->
+                 <div id="Modal2024DaarkaArts" class="modal">
+         <div class="modal-content">
+          <span class="close"><span class="closeButton">&times;</span></span>
+        <div class="cs-itemModal" align="left">
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/0ef0776018cc0d77bbda9c479e74f5c6.png"><img src="https://i.gyazo.com/0ef0776018cc0d77bbda9c479e74f5c6.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/DaarkaArts">@DaarkaArts</a></span>
+                </div>
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/c460ecd96a2312b4543d36049feb51d6.png"><img src="https://i.gyazo.com/c460ecd96a2312b4543d36049feb51d6.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/CypressDice">@CypressDice</a></span>
+                </div>
+            <p class="cs-item-text"></p>
+        </div>
+            <div class="cs-item2" align="left"><span class="cs-tagButton"><b>Moodboard Description</b></span></br>
+            <p>Lonely and tired in a world between dreams and the waking. The shadows are an old friend, but a silent one. A yawning void of starvation, a slip, and a relapse ends a life—taking a fragment of your humanity with it, and leaving behind only bloodstains. It is always hopeless, but you can only ever try to persevere, to find balance where you cannot find a cure. And when that bloody monstrosity becomes too much of who you are... you find your humanity again in the sentimental art of glass, striving to embody that serene beauty and imagining better days within the sleepy hues. Imagining dreams suspended in those swirls and fractals that are filled with love. This, too—like all the dreams and nightmares that came before—shall pass. Must pass. You have to believe that it is possible for someone like you to know peace. Until then... you will dream of it in the colors of glass.</p></div>
+		</div>
+                 </div>
+<!-- / [01]DaarkaArts <- CypressDice -->
+
+
+<!-- [2024_24] SailorZCreations <- DitzyLittleDice -->
+<div class="cs-item" align="left" title="The collage features various flowers in shades of purple, such as clematis, passionflower, hydrangeas, and freesias. There is a mystical forest scene with violet trees and green moss, combined with an abstract artwork of colorful, circular bubbles in vibrant greens, yellows, and blues. The overall mood feels serene and whimsical, with the nature shots and abstract art creating a dreamy atmosphere.">
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/06ac2e86a8fa4e2e5286912f1e643a44.png"><img src="https://i.gyazo.com/06ac2e86a8fa4e2e5286912f1e643a44.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/SailorZCreations">@SailorZCreations</a></span>
+                </div>
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/6b1c961074947a83be07ea9003c0462b.png"><img src="https://i.gyazo.com/6b1c961074947a83be07ea9003c0462b.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/DitzyLittleDice">@DitzyLittleDice</a></span>
+                </div>
+            <p class="cs-item-text"></p>
+            </div>
+<!-- / [2024_24] SailorZCreations <- DitzyLittleDice -->
+
+
+<!-- [2024_24] DiceOfTheSeeker <- DarkSkyDice -->
+<div class="cs-item" align="left" title="Embodying the essence of nature, this druid is adorned with leaves and fungi, symbolising her connection to the forest and the Fey wild around her. She blends seamlessly with the environment, that of a lush enchanted forest, filled with vibrant flora and fauna. Embodying a guardian role, she harmonises with the natural world, protecting the delicate balance of life within her realm.">
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/a89deffc4020c4a91162388d2bff39cc.jpg"><img src="https://i.gyazo.com/a89deffc4020c4a91162388d2bff39cc.jpg"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/DiceOfTheSeeker">@DiceOfTheSeeker</a></span>
+                </div>
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/58b6487bd1be8f1f81f32731f475c437.png"><img src="https://i.gyazo.com/58b6487bd1be8f1f81f32731f475c437.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/DarkSkyDice">@DarkSkyDice</a></span>
+                </div>
+            <p class="cs-item-text"></p>
+            </div>
+<!-- / [2024_24] DiceOfTheSeeker <- DarkSkyDice -->
+
+
+<!-- [2024_24] DarkGem_Dice <- Area.Effects -->
+<div class="cs-item" align="left" title="There was a time in my village where magic didnt exist, when the original Astras first discovered ways to harness and use the power in the stars our little town flourished and soon everyone could harness in varying degrees.  For a while things were great for a while no one worried and life was easier, that is until it wasnt... Word spread quickly and soon people came to seek this power for themselves. However none not born in Andorim could harness and Astras became a rarity as they were stolen away. Secrets to be kept under lock and key until a king, or hot headed general needed more power to tip the scales in their favor.  I watched as friends, neighbors, and family were taken so that they could harness the stars for those that couldnt. Soon someone came for me and my time in Andorim came to an abrupt halt and everything I cherished was stripped away and I had to figure out who I was and where I stood in the war for the skies.">
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/4bcca8a3f196fb3a2b41a6fedf09f7b9.jpg"><img src="https://i.gyazo.com/4bcca8a3f196fb3a2b41a6fedf09f7b9.jpg"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/DarkGem_Dice">@DarkGem_Dice</a></span>
+                </div>
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/b3ce2f1bb274d118ccc13ec642b9ad9e.png"><img src="https://i.gyazo.com/b3ce2f1bb274d118ccc13ec642b9ad9e.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/Area.Effects">@Area.Effects</a></span>
+                </div>
+            <p class="cs-item-text"></p>
+            </div>
+<!-- / [2024_24] DarkGem_Dice <- Area.Effects -->
+
+
+<!-- [2024_24] ShiftyCharlatansDice <- Arcanist_Creations -->
+<div class="cs-item" align="left" title="In a realm where shadows dance and light flickers like the whispers of ancient spirits, a young halfling fighter stands at the edge of an enchanted forest. Her armor gleams, a blend of silver and intricate designs, reflecting the soft glow of ethereal candles that float like stars in the twilight. The air is thick with mist, as wisps of golden light weave through the trees, hinting at secrets hidden within the forest.
+
+Surrounding her is a hauntingly beautiful landscape: the forest, shrouded in fog, beckons with its mysteries. Each towering tree seems alive, their branches reaching out as if to share tales of old. The faint sound of rustling leaves carries the promise of adventure.
+
+In this moment, the fighter’s gaze is filled with determination, her heart beating in rhythm with the pulse of the forest. She is not merely a protector; she is a seeker of truth, destined to uncover the mysteries that binds her world together. As the night deepens, the forest whispers her name, urging her forward into the unknown—a journey where courage meets enchantment, and every shadow holds a story waiting to be told.">
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/1e948b849510f9d99ff8295277f0a458.jpg"><img src="https://i.gyazo.com/1e948b849510f9d99ff8295277f0a458.jpg"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/ShiftyCharlatansDice">@ShiftyCharlatansDice</a></span>
+                </div>
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/b129d091951ff17e749fa8463fe44cc6.png"><img src="https://i.gyazo.com/b129d091951ff17e749fa8463fe44cc6.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/Arcanist_Creations">@Arcanist_Creations</a></span>
+                </div>
+            <p class="cs-item-text"></p>
+            </div>
+<!-- / [2024_24] ShiftyCharlatansDice <- Arcanist_Creations -->
+
+
+<!-- [2024_24] M3_Dice <- ArchivalDice -->
+<div class="cs-item" align="left" title="
+God of smoke and mirrors, Aztec gold and sacrifice for greater power, darkness and shadow, corruption of blood and soul, a predator stalking it's prey.">
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/3f96021baba4a5c8718e4a6410dde4b0.png"><img src="https://i.gyazo.com/3f96021baba4a5c8718e4a6410dde4b0.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/M3_Dice">@M3_Dice</a></span>
+                </div>
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/250c64c9e5f094eca5186036418fa5f9.png"><img src="https://i.gyazo.com/250c64c9e5f094eca5186036418fa5f9.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/ArchivalDice">@ArchivalDice</a></span>
+                </div>
+            <p class="cs-item-text"></p>
+            </div>
+<!-- / [2024_24] M3_Dice <- ArchivalDice -->
+
+
+<!-- [2024_24] SoulForge.Dice <- RibbonAndKnot -->
+<div class="cs-item" align="left" title="Her transformation was glorious, and eternal. The heavens themselves reached out for her, took her fragile body and reforged it into something powerful, beautiful, divine. It swept away pain and disease, brittle limbs and twisted muscles, and in their place they gave her wings. When heaven won’t move an inch, may you have the strength to raise Hell.
+
+Celestial steel and the wings of angels. Silver fire, the hands of a healer, vows made between two souls.">
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/2dfbab23f9ad377860b9df94e3152d3c.jpg"><img src="https://i.gyazo.com/2dfbab23f9ad377860b9df94e3152d3c.jpg"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/SoulForge.Dice">@SoulForge.Dice</a></span>
+                </div>
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/599fef733646b9769cfb2b0fd88e8dba.png"><img src="https://i.gyazo.com/599fef733646b9769cfb2b0fd88e8dba.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/RibbonAndKnot">@RibbonAndKnot</a></span>
+                </div>
+            <p class="cs-item-text"></p>
+            </div>
+<!-- / [2024_24] SoulForge.Dice <- RibbonAndKnot -->
+
+
+<!-- [2024_24] CutthroatDice <- TheMagpiesDice -->
+<div class="cs-item" align="left" title="
+Silence falls as the crunch of your boots in snow stop just short of a foreboding and seemingly endless ice fortress. This deep into the nordic unknown, there's more unknown than known truth. odd creatures gather in the snow with fire and masks, cemeteries come alive at night and statues walk amongst the dead, owls hoot and scream- slicing the silence like a hot knife through a frozen, frigid landscape.">
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/d4075731eef12a329c9aec24f05302f8.png"><img src="https://i.gyazo.com/d4075731eef12a329c9aec24f05302f8.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/CutthroatDice">@CutthroatDice</a></span>
+                </div>
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/e9787cac7704f9c3f668b9a8b57fd3a3.png"><img src="https://i.gyazo.com/e9787cac7704f9c3f668b9a8b57fd3a3.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/TheMagpiesDice">@TheMagpiesDice</a></span>
+                </div>
+            <p class="cs-item-text"></p>
+            </div>
+<!-- / [2024_24] CutthroatDice <- TheMagpiesDice -->
+
+
+<!-- [2024_24] Arcanist_Creations <- SailorZCreations -->
+<div class="cs-item" align="left" title="An aasimar divine soul sorcerer/celestial warlock, he embodies the celestial plane's power within him. A burst of golden light with wings unfurled to fly among the clouds, raining bursts of eldritch and guiding radiant light down below, before threads of gold connect his teammates and friends with a Bless. A welcome light in the darkness, he provides support to those who need it.">
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/7e90d53a5f70aa19db328a4682a79b79.png"><img src="https://i.gyazo.com/7e90d53a5f70aa19db328a4682a79b79.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/Arcanist_Creations">@Arcanist_Creations</a></span>
+                </div>
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/thumb/1000/94abbe5830721dd7519cfae2c273581c-png.jpg"><img src="https://i.gyazo.com/thumb/1000/94abbe5830721dd7519cfae2c273581c-png.jpg"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/SailorZCreations">@SailorZCreations</a></span>
+                </div>
+            <p class="cs-item-text"></p>
+            </div>
+<!-- / [2024_24] Arcanist_Creations <- SailorZCreations -->
+
+
+<!-- [2024_24] Geckohedron <- DiceOfTheSeeker -->
+<div class="cs-item" align="left" title="Asleep in a barrel, surrounded by darkness. Comfortable darkness. Memories of the depths engulfed by tentacles. Clinging to a small trinket, your one memory of home.">
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/1bed6b197cedb52e827d9ccf4a21050b.png"><img src="https://i.gyazo.com/1bed6b197cedb52e827d9ccf4a21050b.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/Geckohedron">@Geckohedron</a></span>
+                </div>
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/7863a7b18c308fadf54c8a066e87b3db.png"><img src="https://i.gyazo.com/7863a7b18c308fadf54c8a066e87b3db.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/DiceOfTheSeeker">@DiceOfTheSeeker</a></span>
+                </div>
+            <p class="cs-item-text"></p>
+            </div>
+<!-- / [2024_24] Geckohedron <- DiceOfTheSeeker -->
+
+
+<!-- [2024_24] Dare_To_Dice <- DecusWorkshop -->
+<div class="cs-item" align="left" title="Fire was all she had ever known, and now her flames were so hot with rage they began to burn an icy blue. Her patron bestowed upon her a new blade, one forged in dark steel that was warm to the touch. Time had been taken from her- precious time- and she would hunt down the thief herself.">
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/7ab0830c047cc4131226fcebefb37305.png"><img src="https://i.gyazo.com/7ab0830c047cc4131226fcebefb37305.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/Dare_To_Dice">@Dare_To_Dice</a></span>
+                </div>
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/thumb/1000/abfbf1988ea2ab4f63575f1610207b5d-png.jpg"><img src="https://i.gyazo.com/thumb/1000/abfbf1988ea2ab4f63575f1610207b5d-png.jpg"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/DecusWorkshop">@DecusWorkshop</a></span>
+                </div>
+            <p class="cs-item-text"></p>
+            </div>
+<!-- / [2024_24] Dare_To_Dice <- DecusWorkshop -->
+
+
+<!-- [2024_24] SilverleafDice <- DiceNDire -->
+<div class="cs-item" align="left" title="Combination of cool tones from green, blue, turquoise, purple with and maybe dragonscale or luminescent forest inspired!">
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/cd05ac526c86c99f5f39f975dff83321.png"><img src="https://i.gyazo.com/cd05ac526c86c99f5f39f975dff83321.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/SilverleafDice">@SilverleafDice</a></span>
+                </div>
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/2392f8ca7e9525a4e3b3875694bf7914.png"><img src="https://i.gyazo.com/2392f8ca7e9525a4e3b3875694bf7914.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/DiceNDire">@DiceNDire</a></span>
+                </div>
+            <p class="cs-item-text"></p>
+            </div>
+<!-- / [2024_24] SilverleafDice <- DiceNDire -->
+
+
+<!-- [2024_24] Imaginarium_Dice <- TransmutationDice -->
+<div class="cs-item" align="left" title="The bubbly elf, in a whirl of silky green hair and glittery purple fabrics, guides you forth with a bounce in her step "Come meet dad, I told him all about my adventuring friends and he wants to meet you!". her voice is like wind chimes on a midwinter night. You follow her, eager to meet the being that would raise such a gentle and child-like travelling companion. As you enter the clearing, a ray of moonlight lends your eyes the ability to see what your brain refuses to comprehend. There, straight out of a Lovecraftian nightmare, a writhing tangle of tentacles, wings, and eyes awaits. Your mind breaks at the sight -- or is it the multitude of anguished, pleading, weeping, screaming voices that now fill your head? You do not know where they end, and where you begin. As your very self is drowning in the chaos, you hear a silvery laugh asking you why you seem so scared... and then hear nothing at all">
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/3acfad89f549088bc96bc797b3027a30.png"><img src="https://i.gyazo.com/3acfad89f549088bc96bc797b3027a30.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/Imaginarium_Dice">@Imaginarium_Dice</a></span>
+                </div>
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/d5b478145b4e1c7c15632eb6e9acbe14.png"><img src="https://i.gyazo.com/d5b478145b4e1c7c15632eb6e9acbe14.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/TransmutationDice">@TransmutationDice</a></span>
+                </div>
+            <p class="cs-item-text"></p>
+            </div>
+<!-- / [2024_24] Imaginarium_Dice <- TransmutationDice -->
+
+
+<!-- [2024_24] Qweerosaurus <- Dice.XIX -->
+<div class="cs-item" align="left" title="Clinking clanking,
+Electric buzzing,
+Filled of smoke and leather,
+A time that happened never.">
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/b706c4e905c3df2ccc17996497941c35.png"><img src="https://i.gyazo.com/b706c4e905c3df2ccc17996497941c35.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/Qweerosaurus">@Qweerosaurus</a></span>
+                </div>
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/56ef779cfe954390735610ee67675fae.png"><img src="https://i.gyazo.com/56ef779cfe954390735610ee67675fae.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/Dice.XIX">@Dice.XIX</a></span>
+                </div>
+            <p class="cs-item-text"></p>
+            </div>
+<!-- / [2024_24] Qweerosaurus <- Dice.XIX -->
+
+
+<!-- [2024_24] Normal_Human_Dice <- Cat_Tales_Dice -->
+<div class="cs-item" align="left" title="Alien, Skeleton, Lisa frank, Bright, Deep blacks, Glitter, Spooky madcap sychedelic, will wood and the tape worms. Tim Burton.">
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/9ece2f7c9cdabba2373c403b29f9158e.jpg"><img src="https://i.gyazo.com/9ece2f7c9cdabba2373c403b29f9158e.jpg"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/Normal_Human_Dice">@Normal_Human_Dice</a></span>
+                </div>
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/thumb/1000/2c3263c12958654cba576b633792d165-png.jpg"><img src="https://i.gyazo.com/thumb/1000/2c3263c12958654cba576b633792d165-png.jpg"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/Cat_Tales_Dice">@Cat_Tales_Dice</a></span>
+                </div>
+            <p class="cs-item-text"></p>
+            </div>
+<!-- / [2024_24] Normal_Human_Dice <- Cat_Tales_Dice -->
+
+
+<!-- [2024_24] SevenLuckyDice <- Dare_To_Dice -->
+<div class="cs-item" align="left" title="When a flower grows wild it can always survive. Wildflowers don't care where they grow.
+
+The desert stretches endlessly beneath a canvas sky painted in hues of pink and purple, the golden sun reluctant to leave the day behind. She sits tall--proud--in the saddle, the rhythm of hooves against the earth like the very heartbeat within her chest.
+
+Lady Luck has been a fickle friend. But tonight, she smiles down upon her, allowing yet another ride into the embrace of a new dawn.
+
+She is where she belongs. Wild. Free. With nothing but the horizon ahead and the bridges she's burned to light the way.">
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/2f94aa69c4c6e08188265d528ca74e30.png"><img src="https://i.gyazo.com/2f94aa69c4c6e08188265d528ca74e30.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/SevenLuckyDice">@SevenLuckyDice</a></span>
+                </div>
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/c3f967ebf32b12a22507df60d48e58e1.png"><img src="https://i.gyazo.com/c3f967ebf32b12a22507df60d48e58e1.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/Dare_To_Dice">@Dare_To_Dice</a></span>
+                </div>
+            <p class="cs-item-text"></p>
+            </div>
+<!-- / [2024_24] SevenLuckyDice <- Dare_To_Dice -->
+
+
+<!-- [2024_24] Gay.Interference.Crafts <- Normal_Human_Dice -->
+<div class="cs-item" align="left" title="The neon lights in the undercity give the Graffitis a unique glowing charm, some of them even seem to glow themselves. Someone here must love cute animals because there are lot of animal Graffitis here.">
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/833acf18fa04dc329214f97cf62d5923.jpg"><img src="https://i.gyazo.com/833acf18fa04dc329214f97cf62d5923.jpg"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/Gay.Interference.Crafts">@Gay.Interference.Crafts</a></span>
+                </div>
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/95f19324c8ac453c0a4c95dae195a236.png"><img src="https://i.gyazo.com/95f19324c8ac453c0a4c95dae195a236.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/Normal_Human_Dice">@Normal_Human_Dice</a></span>
+                </div>
+            <p class="cs-item-text"></p>
+            </div>
+<!-- / [2024_24] Gay.Interference.Crafts <- Normal_Human_Dice -->
+
+
+<!-- [2024_24] Dice.XIX <- Geckohedron -->
+<div class="cs-item" align="left" title="Pink and blue colours with nature and cloud feel">
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/f50ea56633ce693a5a78cd465f3decee.png"><img src="https://i.gyazo.com/f50ea56633ce693a5a78cd465f3decee.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/Dice.XIX">@Dice.XIX</a></span>
+                </div>
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/3fd3edc02ea94de825c6560b9b2ad96b.png"><img src="https://i.gyazo.com/3fd3edc02ea94de825c6560b9b2ad96b.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/Geckohedron">@Geckohedron</a></span>
+                </div>
+            <p class="cs-item-text"></p>
+            </div>
+<!-- / [2024_24] Dice.XIX <- Geckohedron -->
+
+
+<!-- [2024_24] Helios.Dice <- ProfRoseCreations -->
+<div class="cs-item" align="left" title="#Alien #Space #Sunset #lisafrank">
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/dd0d19e9796a6b7389ca294129972fa8.jpg"><img src="https://i.gyazo.com/dd0d19e9796a6b7389ca294129972fa8.jpg"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/Helios.Dice">@Helios.Dice</a></span>
+                </div>
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/1c0b29f289d19c60716dcfac36e7a33e.png"><img src="https://i.gyazo.com/1c0b29f289d19c60716dcfac36e7a33e.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/ProfRoseCreations">@ProfRoseCreations</a></span>
+                </div>
+            <p class="cs-item-text"></p>
+            </div>
+<!-- / [2024_24] Helios.Dice <- ProfRoseCreations -->
+
+
+<!-- [2024_24] TheSunflowerEmporium <- CutthroatDice -->
+<div class="cs-item" align="left" title="Inspired by the Last of Us, the vibes are earthy, moody, a mix of destruction and growth. But it is not all dark, as there are moments of levity and light throughout the devastation. Cordyceps, fungus, ferns, moths are images to pull inspiration from.">
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/4b8f6a1f36bc3f2bb9b629545288c8a9.png"><img src="https://i.gyazo.com/4b8f6a1f36bc3f2bb9b629545288c8a9.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/TheSunflowerEmporium">@TheSunflowerEmporium</a></span>
+                </div>
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/thumb/1000/25dd7e0c856e31a9bd7882d64f3ad228-png.jpg"><img src="https://i.gyazo.com/thumb/1000/25dd7e0c856e31a9bd7882d64f3ad228-png.jpg"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/CutthroatDice">@CutthroatDice</a></span>
+                </div>
+            <p class="cs-item-text"></p>
+            </div>
+<!-- / [2024_24] TheSunflowerEmporium <- CutthroatDice -->
+
+
+<!-- [2024_24] DetectMagicDice <- InfernalFoundry -->
+<div class="cs-item" align="left" title="
+Prose: Reborn in the void of lost memory, inside her there is only lightning. Nothing is too high a sacrifice in the pursuit of power. The rejected becomes a static spark striking out to devour, arcing through whatever lies in wait with grim determination. She is adrift, seeking any kind of connection; otherwise, her ends will justify any means.
+
+Literal: A dark and dramatic mood-board rich with imagery about lightning, specifically a single magic user's invocation of it which seems to stain her skin when she channels her magic. There is a sense of striving for knowledge, a thirst that has not quite been satiated, even though the quest for power has taken years of memories, which are gone like shadows in the mind. There are motives of arcane magic, moths, and death. The mood-board's main colors are an arcane magical blue, with companion hints of green and purple around the electric blue of the user's magic.">
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/fc07624b568638cf80370ff75092e6c3.png"><img src="https://i.gyazo.com/fc07624b568638cf80370ff75092e6c3.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/DetectMagicDice">@DetectMagicDice</a></span>
+                </div>
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/ee43a8422016eb277475232435c41b99.png"><img src="https://i.gyazo.com/ee43a8422016eb277475232435c41b99.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/InfernalFoundry">@InfernalFoundry</a></span>
+                </div>
+            <p class="cs-item-text"></p>
+            </div>
+<!-- / [2024_24] DetectMagicDice <- InfernalFoundry -->
+
+
+<!-- [2024_24] DarkSkyDice <- ShiftyCharlatansDice -->
+<div class="cs-item" align="left" title="Described as underdark lady knight vibes, this se would be for a paladin on a quest through the underdark.">
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/6994c21e410b127d4969ac483ba51798.jpg"><img src="https://i.gyazo.com/6994c21e410b127d4969ac483ba51798.jpg"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/DarkSkyDice">@DarkSkyDice</a></span>
+                </div>
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/95384e30e4b6a6f92c1ab99fb3b01d9a.png"><img src="https://i.gyazo.com/95384e30e4b6a6f92c1ab99fb3b01d9a.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/ShiftyCharlatansDice">@ShiftyCharlatansDice</a></span>
+                </div>
+            <p class="cs-item-text"></p>
+            </div>
+<!-- / [2024_24] DarkSkyDice <- ShiftyCharlatansDice -->
+
+
+<!-- [2024_24] Cat_Tales_Dice <- SchimmerundStaub -->
+<div class="cs-item" align="left" title="A love for the beauty and wispiness of outer space. Greens and golds mixed with white stardust along the black void of space.">
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/e1ea51fe68bb74da68dea0be6bb86d78.png"><img src="https://i.gyazo.com/e1ea51fe68bb74da68dea0be6bb86d78.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/Cat_Tales_Dice">@Cat_Tales_Dice</a></span>
+                </div>
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/bdddab5cd93a195fd8aaab17581299ae.png"><img src="https://i.gyazo.com/bdddab5cd93a195fd8aaab17581299ae.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/SchimmerundStaub">@SchimmerundStaub</a></span>
+                </div>
+            <p class="cs-item-text"></p>
+            </div>
+<!-- / [2024_24] Cat_Tales_Dice <- SchimmerundStaub -->
+
+
+<!-- [2024_24] SchimmerundStaub <- RotwyrmOddities -->
+<div class="cs-item" align="left" title="The forest often hides more than meets the eye. Something magical can be hidden behind every tree.">
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/87dc662809e3c0e9a18e801f21d6a323.png"><img src="https://i.gyazo.com/87dc662809e3c0e9a18e801f21d6a323.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/SchimmerundStaub">@SchimmerundStaub</a></span>
+                </div>
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/thumb/1000/5745d35407d7988d3de2bc305dc6e41b-png.jpg"><img src="https://i.gyazo.com/thumb/1000/5745d35407d7988d3de2bc305dc6e41b-png.jpg"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/RotwyrmOddities">@RotwyrmOddities</a></span>
+                </div>
+            <p class="cs-item-text"></p>
+            </div>
+<!-- / [2024_24] SchimmerundStaub <- RotwyrmOddities -->
+
+
+<!-- [2024_24] TheMagpiesDice <- DarkGem_Dice -->
+<div class="cs-item" align="left" title="
+The forest is dark and eerie, with a haze that colors the surrounding air purple. A glowing trail is created by luminescent blue will-o-wisps, leading you deeper into the forest. The trees themselves seem to watch as you pass, fluttering like a pair of wings if you get too close. The ground is covered by glowing mushrooms, moss and dark-hued flowers... You've been led to a ritual circle, torches aflame in the distance.">
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/b7e44f7aae874e050b3fa69e785e5a22.jpg"><img src="https://i.gyazo.com/b7e44f7aae874e050b3fa69e785e5a22.jpg"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/TheMagpiesDice">@TheMagpiesDice</a></span>
+                </div>
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/bb6f62727ba71ef29de94797e08d1726.png"><img src="https://i.gyazo.com/bb6f62727ba71ef29de94797e08d1726.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/DarkGem_Dice">@DarkGem_Dice</a></span>
+                </div>
+            <p class="cs-item-text"></p>
+            </div>
+<!-- / [2024_24] TheMagpiesDice <- DarkGem_Dice -->
+
+
+<!-- [2024_24] Dice_Garden <- Dicent.Dice -->
+<div class="cs-item" align="left" title="Setting out on your first adventure, you see around you with rose tinted glasses. Is everything actually that wonderful and shiny or is there something more sinister awaiting you across the horizon? For now, the world is as brilliant and magical as you've always dreamt it to be.">
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/8396eac8b3ae43a4fbbe55285a07fc41.png"><img src="https://i.gyazo.com/8396eac8b3ae43a4fbbe55285a07fc41.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/Dice_Garden">@Dice_Garden</a></span>
+                </div>
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/c96b7552cf41cd912b50f7b007d890b9.png"><img src="https://i.gyazo.com/c96b7552cf41cd912b50f7b007d890b9.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/Dicent.Dice">@Dicent.Dice</a></span>
+                </div>
+            <p class="cs-item-text"></p>
+            </div>
+<!-- / [2024_24] Dice_Garden <- Dicent.Dice -->
+
+
+<!-- [2024_24] Dicent.Dice <- Qweerosaurus -->
+<div class="cs-item" align="left" title="The feeling of loss and childhood nostalgia for lost and long forgotten things and memories. The desire to stop in time in childhood naivety, in a childlike dream. To never grow up.">
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/a21b0610f330d608e1c1f66e876d8c5c.png"><img src="https://i.gyazo.com/a21b0610f330d608e1c1f66e876d8c5c.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/Dicent.Dice">@Dicent.Dice</a></span>
+                </div>
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/65b1eaf7ea5275bf7cc4496bc8f81cc8.png"><img src="https://i.gyazo.com/65b1eaf7ea5275bf7cc4496bc8f81cc8.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/Qweerosaurus">@Qweerosaurus</a></span>
+                </div>
+            <p class="cs-item-text"></p>
+            </div>
+<!-- / [2024_24] Dicent.Dice <- Qweerosaurus -->
+
+
+<!-- [2024_24] RotwyrmOddities <- SoulForge.Dice -->
+<div class="cs-item" align="left" title="Gothic, vampiric, sexy. Luxurious silks, colors such as wine red, gold, peacock green and black. Filigree and ornamented patterns, animal skulls, serpents/ snake scale (texture). Blood, victorian drama, goblets/ chalices, darkness, etc. The feeling of the song Sonia by Rammstein as an image, the etheral darkness or horror that is still classy and sexy. Like the throne of a villainous queen or something one may call satanic. Very Castlevania.">
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/bc90ac308e828e301ad20018a870eb91.png"><img src="https://i.gyazo.com/bc90ac308e828e301ad20018a870eb91.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/RotwyrmOddities">@RotwyrmOddities</a></span>
+                </div>
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/88143b24952743adb2cf8ff8e52f222f.png"><img src="https://i.gyazo.com/88143b24952743adb2cf8ff8e52f222f.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/SoulForge.Dice">@SoulForge.Dice</a></span>
+                </div>
+            <p class="cs-item-text"></p>
+            </div>
+<!-- / [2024_24] RotwyrmOddities <- SoulForge.Dice -->
+
+
+<!-- [2024_24] Dark_Matter_Dice <- Vulpes_Dice -->
+<div class="cs-item" align="left" title="Space explorers, but make it fun. Bright colours pop against the backdrop of the dark void, joy and optimism against the backdrop of danger. We don’t know where we’re going, but maybe we’ll make some friends there. Or at least come back with a hell of a story.">
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/1942724b4eb0971b14785f75a08c436a.jpg"><img src="https://i.gyazo.com/1942724b4eb0971b14785f75a08c436a.jpg"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/Dark_Matter_Dice">@Dark_Matter_Dice</a></span>
+                </div>
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/748d46d6b759a6d0dd0f7bbcdf0dc1cb.png"><img src="https://i.gyazo.com/748d46d6b759a6d0dd0f7bbcdf0dc1cb.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/Vulpes_Dice">@Vulpes_Dice</a></span>
+                </div>
+            <p class="cs-item-text"></p>
+            </div>
+<!-- / [2024_24] Dark_Matter_Dice <- Vulpes_Dice -->
+
+
+<!-- [2024_24] DecusWorkshop <- Westcoast.Warlock -->
+<div class="cs-item" align="left" title="Aluksandr Koval is equal parts a brilliant inventor/engineer, a devoted son, and an asshole on purpose to everyone except his mom. Known as Anders to his friends associates party members, he is practical and efficient to his core and has cemented himself as one of the most reliable individuals embarking on this mission. His inventions have already solved a myriad of bizarre problems, largely falling into the same category of style and core design: clean and simplified art nouveau metal elements decorate his contraptions, each of them powered by arcane sapphires. The biggest of these stones is rough cut dodecahedron the size of his fist, and can usually be found in the abdomen of his orb weaver spider styled homunculus.">
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/3ba57d1d0b7c5b12c47d8aaf73dbe968.png"><img src="https://i.gyazo.com/3ba57d1d0b7c5b12c47d8aaf73dbe968.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/DecusWorkshop">@DecusWorkshop</a></span>
+                </div>
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/thumb/1000/3b87413a68af9308ae0ee97884d65ae4-png.jpg"><img src="https://i.gyazo.com/thumb/1000/3b87413a68af9308ae0ee97884d65ae4-png.jpg"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/Westcoast.Warlock">@Westcoast.Warlock</a></span>
+                </div>
+            <p class="cs-item-text"></p>
+            </div>
+<!-- / [2024_24] DecusWorkshop <- Westcoast.Warlock -->
+
+
+<!-- [2024_24] CupCakeCueenCo <- TheSunflowerEmporium -->
+<div class="cs-item" align="left" title="Medieval, dark royalty, mysterious, whimsical.">
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/97245e59e8f7a9a5493d1c8c1d024aea.png"><img src="https://i.gyazo.com/97245e59e8f7a9a5493d1c8c1d024aea.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/CupCakeCueenCo">@CupCakeCueenCo</a></span>
+                </div>
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/040baf325dee020943eb4f51aca18178.png"><img src="https://i.gyazo.com/040baf325dee020943eb4f51aca18178.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/TheSunflowerEmporium">@TheSunflowerEmporium</a></span>
+                </div>
+            <p class="cs-item-text"></p>
+            </div>
+<!-- / [2024_24] CupCakeCueenCo <- TheSunflowerEmporium -->
+
+
+<!-- [2024_24] CypressDice <- CupCakeCueenCo -->
+<div class="cs-item" align="left" title="The sky is red, and the moon hangs low. The night is quiet, save for the wind in the trees and the deep beating of your heart, urging you to dance, barefoot on the forest floor. Tonight you perform for the moon herself.">
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/0e94fac746c94f6d04cb7fb79cb441d3.png"><img src="https://i.gyazo.com/0e94fac746c94f6d04cb7fb79cb441d3.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/CypressDice">@CypressDice</a></span>
+                </div>
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/692def8187a0cb676e45beba5414296d.png"><img src="https://i.gyazo.com/692def8187a0cb676e45beba5414296d.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/CupCakeCueenCo">@CupCakeCueenCo</a></span>
+                </div>
+            <p class="cs-item-text"></p>
+            </div>
+<!-- / [2024_24] CypressDice <- CupCakeCueenCo -->
+
+
+<!-- [2024_24] CrystalRole <- SevenLuckyDice -->
+<div class="cs-item" align="left" title="A vampire scholar traveling through the world to fight for magic. Especially good with necrotic and blood magic. Every aspect of magic is interesting.">
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/f5cdc6e5cc55c98b28226dd75a29283e.png"><img src="https://i.gyazo.com/f5cdc6e5cc55c98b28226dd75a29283e.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/CrystalRole">@CrystalRole</a></span>
+                </div>
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/acc8ddc5f3ea288864415ae01acc838d.png"><img src="https://i.gyazo.com/acc8ddc5f3ea288864415ae01acc838d.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/SevenLuckyDice">@SevenLuckyDice</a></span>
+                </div>
+            <p class="cs-item-text"></p>
+            </div>
+<!-- / [2024_24] CrystalRole <- SevenLuckyDice -->
+
+
+<!-- [2024_24] ArchivalDice <- Gay.Interference.Crafts -->
+<div class="cs-item" align="left" title="An old but still active graveyard. Freshly turned soil and linen wraps, a small bunch of flowers wilting slowly. The ever present pull between life and death, the red thread of fate. incense smoke and crackling white powerful magic.">
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/a683bde4edb5a649ea2b78d1ec8fa04b.jpg"><img src="https://i.gyazo.com/a683bde4edb5a649ea2b78d1ec8fa04b.jpg"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/ArchivalDice">@ArchivalDice</a></span>
+                </div>
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/052320116eeab43e5e299bd2aeae2a48.png"><img src="https://i.gyazo.com/052320116eeab43e5e299bd2aeae2a48.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/Gay.Interference.Crafts">@Gay.Interference.Crafts</a></span>
+                </div>
+            <p class="cs-item-text"></p>
+            </div>
+<!-- / [2024_24] ArchivalDice <- Gay.Interference.Crafts -->
+
+
+<!-- [2024_24] Vulpes_Dice <- Mirkwood_Dice -->
+<div class="cs-item" align="left" title="
+A curious young fox crawled out of his home to take a deep breath of fresh air. It seems familiar, but also like a magical wind of growth. It’s the feeling of an arriving adventure, golden spark between the trees, an inviting path into the unknown. It also feels like coming home. Finally.">
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/0d092b73c5ef14a5fa0afb162bff6f5b.jpg"><img src="https://i.gyazo.com/0d092b73c5ef14a5fa0afb162bff6f5b.jpg"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/Vulpes_Dice">@Vulpes_Dice</a></span>
+                </div>
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/d4d47224241c6dbfc8c00e6386e0cd85.png"><img src="https://i.gyazo.com/d4d47224241c6dbfc8c00e6386e0cd85.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/Mirkwood_Dice">@Mirkwood_Dice</a></span>
+                </div>
+            <p class="cs-item-text"></p>
+            </div>
+<!-- / [2024_24] Vulpes_Dice <- Mirkwood_Dice -->
+
+
+<!-- [2024_24] Polka.Dice <- Dark_Matter_Dice -->
+<div class="cs-item" align="left" title="My moodboard is inspired by my character a hexblood runechild sorcerer, an apprentice of a green witch. I would love a dark green vibe, think misty forest, witches hut, poisonous flowers like belladona.">
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/4a282a1d5f8cbc8ce87dd701c211b597.jpg"><img src="https://i.gyazo.com/4a282a1d5f8cbc8ce87dd701c211b597.jpg"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/Polka.Dice">@Polka.Dice</a></span>
+                </div>
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/f1bc3f68a49d8a5042fe63a5ae654d5c.png"><img src="https://i.gyazo.com/f1bc3f68a49d8a5042fe63a5ae654d5c.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/Dark_Matter_Dice">@Dark_Matter_Dice</a></span>
+                </div>
+            <p class="cs-item-text"></p>
+            </div>
+<!-- / [2024_24] Polka.Dice <- Dark_Matter_Dice -->
+
+
+<!-- [2024_24] GG.Dice <- SilverleafDice -->
+<div class="cs-item" align="left" title="A secretive tabaxi Assassin named Snow (short for Snowflake) who ventured outside her home village to find adventure and bring criminals to justice. Usually found lurking in the shadows, Snow is always looking and listening, ready to face any trouble with a quick throw of her fishing knife. The only thing that takes her not too few times astray from her target is shiny objects. Any and every sparkly thing can be the end of her train of thought. So shiny! Can't.. Resist…">
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/88fbb2a4b913db09061c86cd4e160bfe.png"><img src="https://i.gyazo.com/88fbb2a4b913db09061c86cd4e160bfe.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/GG.Dice">@GG.Dice</a></span>
+                </div>
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/269b542f5faa152270de5daeac47a7bc.png"><img src="https://i.gyazo.com/269b542f5faa152270de5daeac47a7bc.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/SilverleafDice">@SilverleafDice</a></span>
+                </div>
+            <p class="cs-item-text"></p>
+            </div>
+<!-- / [2024_24] GG.Dice <- SilverleafDice -->
+
+
+<!-- [2024_24] Westcoast.Warlock <- StudioHexe -->
+<div class="cs-item" align="left" title="We think of space as cold and barren, but what if its warm and full of life? Sunsets, starscapes, auroras, and clouds, abstract homes and ships, pinks and yellows and warm tones surround your vessel in a comforting hug. I like to think this is the kind of world Laika experienced on her one-way trip.">
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/9a06f108689007a1da59bd8e7e8ed363.png"><img src="https://i.gyazo.com/9a06f108689007a1da59bd8e7e8ed363.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/Westcoast.Warlock">@Westcoast.Warlock</a></span>
+                </div>
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/ab89f08ff494575a9eaad1b8a180aed6.png"><img src="https://i.gyazo.com/ab89f08ff494575a9eaad1b8a180aed6.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/StudioHexe">@StudioHexe</a></span>
+                </div>
+            <p class="cs-item-text"></p>
+            </div>
+<!-- / [2024_24] Westcoast.Warlock <- StudioHexe -->
+
+
+<!-- [2024_24] StudioHexe <- Helios.Dice -->
+<div class="cs-item" align="left" title="This moodboard is for a character named "SpaceCase" who is a bowler and chill nonbinary individual. Trippy blends of colors from the glass of a beautiful mixed cocktail beverage, to the beauty in scars on skin and in geodes, and the shades of sparkly glimmers and reflections from opals and gemstones. Like The Dude from Big Lebowski, SpaceCase abides.
+
+All geodes, gems, and the earth itself abides. This character always wears sunglasses, even at night (/song reference), and the board was inspired by all of that, plus the UV bowling balls and lanes with their fae-like magic party quality. Whatever happens in life, you just gotta bowl with it and vibe the best you can.">
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/81f933cbd568a42ea80471c6cf1b61f5.png"><img src="https://i.gyazo.com/81f933cbd568a42ea80471c6cf1b61f5.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/StudioHexe">@StudioHexe</a></span>
+                </div>
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/a91b95de8bb60a769edf3994d240926e.png"><img src="https://i.gyazo.com/a91b95de8bb60a769edf3994d240926e.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/Helios.Dice">@Helios.Dice</a></span>
+                </div>
+            <p class="cs-item-text"></p>
+            </div>
+<!-- / [2024_24] StudioHexe <- Helios.Dice -->
+
+
+<!-- [2024_24] FiveStones.Co <- Polka.Dice -->
+<div class="cs-item" align="left" title="Petrichor, wet earth and swirling clouds. The earth yearns for rain. Cacti reach up to the sky. Water floods over the desert sands, violent rains lashing the rocks, gone as quickly as it came.">
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/39c02ba27bad1e8f8438cd960c80a455.png"><img src="https://i.gyazo.com/39c02ba27bad1e8f8438cd960c80a455.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/FiveStones.Co">@FiveStones.Co</a></span>
+                </div>
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/ac20b6d0db77a2f0e3bfa0fafb0e6aa4.png"><img src="https://i.gyazo.com/ac20b6d0db77a2f0e3bfa0fafb0e6aa4.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/Polka.Dice">@Polka.Dice</a></span>
+                </div>
+            <p class="cs-item-text"></p>
+            </div>
+<!-- / [2024_24] FiveStones.Co <- Polka.Dice -->
+
+
+<!-- [2024_24] Area.Effects <- GG.Dice -->
+<div class="cs-item" align="left" title="
+Mischief and mystery. Delight in darkness. A blend of dark, whimsical, and dreamlike elements. Perfect for someone drawn to magic, nature, and cozy gothic themes.">
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/2f0590b632881b4eb5fb20c35509f3d8.png"><img src="https://i.gyazo.com/2f0590b632881b4eb5fb20c35509f3d8.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/Area.Effects">@Area.Effects</a></span>
+                </div>
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/5d790a3ef0555e106c7476e4f6d8ec12.png"><img src="https://i.gyazo.com/5d790a3ef0555e106c7476e4f6d8ec12.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/GG.Dice">@GG.Dice</a></span>
+                </div>
+            <p class="cs-item-text"></p>
+            </div>
+<!-- / [2024_24] Area.Effects <- GG.Dice -->
+
+
+<!-- [2024_24] DitzyLittleDice <- DetectMagicDice -->
+<div class="cs-item" align="left" title="I would like something for my new character; she is a Spring Eladrin with a mischievous streak, full of fun and joy. She is golden and green/blue when at her happiest.">
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/4c66c99e1bf6124ce5ccb64083370fea.png"><img src="https://i.gyazo.com/4c66c99e1bf6124ce5ccb64083370fea.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/DitzyLittleDice">@DitzyLittleDice</a></span>
+                </div>
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/fee609859e6c5644c041122f18b60f99.png"><img src="https://i.gyazo.com/fee609859e6c5644c041122f18b60f99.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/DetectMagicDice">@DetectMagicDice</a></span>
+                </div>
+            <p class="cs-item-text"></p>
+            </div>
+<!-- / [2024_24] DitzyLittleDice <- DetectMagicDice -->
+
+
+<!-- [2024_24] RibbonAndKnot <- FiveStones.Co -->
+<div class="cs-item" align="left" title="I love when the sky changes color and you feel a sense of hope and sadness at the same time. I love clouds and sunsets.">
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/52091efd3373fe5f61ed4c103a95872b.png"><img src="https://i.gyazo.com/52091efd3373fe5f61ed4c103a95872b.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/RibbonAndKnot">@RibbonAndKnot</a></span>
+                </div>
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/7438b1e3ca37307fa116a663ae375a1f.png"><img src="https://i.gyazo.com/7438b1e3ca37307fa116a663ae375a1f.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/FiveStones.Co">@FiveStones.Co</a></span>
+                </div>
+            <p class="cs-item-text"></p>
+            </div>
+<!-- / [2024_24] RibbonAndKnot <- FiveStones.Co -->
+
+
+<!-- [2024_24] TransmutationDice <- SoulForge.Dice -->
+<div class="cs-item" align="left" title="Darkness and Light. Colour and Colourless. Starlight and Voidspace. One aesthetic – dark, moody, galaxies of stars, inky black tendrils, the darkness of night. The other aesthetic – iridescence, glitter, opals, rainbows, a riot of colour and light.
+Two realms collide, both fierce and fair,
+One cloaked in shadows, one aglow with flare.
+In the dance of dark and bright,
+Life unfurls in endless flight.">
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/6251e4c25aca1a36bb161496581ae9df.png"><img src="https://i.gyazo.com/6251e4c25aca1a36bb161496581ae9df.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/TransmutationDice">@TransmutationDice</a></span>
+                </div>
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/2da2649a61c41376c3ddd4d302acbfb0.jpg"><img src="https://i.gyazo.com/2da2649a61c41376c3ddd4d302acbfb0.jpg"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/SoulForge.Dice">@SoulForge.Dice</a></span>
+                </div>
+            <p class="cs-item-text"></p>
+            </div>
+<!-- / [2024_24] TransmutationDice <- SoulForge.Dice -->
+</div>
+
+</div>
+
+</div>
+</div>
+</section>
+</div>
+
+<script>
+function openCity(evt, cityName) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+  document.getElementById(cityName).style.display = "block";
+  evt.currentTarget.className += " active";
+}
+
+// Get the element with id="defaultOpen" and click on it
+document.getElementById("defaultOpen").click();
+
+
+// Accordion
+var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var panel = this.nextElementSibling;
+    if (panel.style.display === "block") {
+      panel.style.display = "none";
+    } else {
+      panel.style.display = "block";
+    }
+  });
+}
+
+// Event delegation for all modal buttons
+document.addEventListener('click', function(event) {
+  // Open modal when clicking buttons
+  if (event.target.classList.contains('DescriptionButton')) {
+    const modalId = event.target.getAttribute('data-modal');
+    const modal = document.getElementById(modalId);
+    modal.style.display = 'block';
+  }
+  
+  // Close modal when clicking close buttons
+  if (event.target.classList.contains('closeButton')) {
+    const modal = event.target.closest('.modal');
+    modal.style.display = 'none';
+  }
+  
+  // Close modal when clicking outside
+  if (event.target.classList.contains('modal')) {
+    event.target.style.display = 'none';
+  }
+});
+
+</script>
+
+</body>
+</html>
