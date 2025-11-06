@@ -1,0 +1,511 @@
+<html>
+<head>
+    <link href='https://fonts.googleapis.com/css?family=Playpen Sans' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+:root {
+    /* Add these styles to your global stylesheet, which is used across all site pages. You only need to do this once. All elements in the library derive their variables and base styles from this central sheet, simplifying site-wide edits. For instance, if you want to modify how your h2's appear across the site, you just update it once in the global styles, and the changes apply everywhere. */
+    --textLight: #782B42;
+    --textLightest: #fff0e7;
+    --textDark: #4B1C2C;
+    --textButton: #fff9f0;
+    --backgroundClear: #FFFFFF00; /* FFFFFF00 */
+    --backgroundColor: #FFEAC952;
+    --backgroundColorSolid: #f5dbc3;
+    --backgroundopaque: #e0beb0;
+    --backgroundButton: #22171b49;
+    --outlineButton: #22131849;
+    --outlineBrighter: #f89c9649;
+    --shadowColor: #4A1B2B59;
+    --outlineColor: #8b6166;
+    --sidebarColor: #D7947B5E;
+    --sidebarHighlight: #ECCCAF;
+    --sidebarHighlightLess: #ecccaf7c;
+    --Raspberry: #782B42;
+    --textBrown: #66302c;
+    /* 31px - 49px */
+    --textsizeBig: clamp(1.9375rem, 3.9vw, 3.0625rem);
+    --textsizeReg: 1rem;
+    --sectionPadding: 0px;
+}
+hr {
+  border-color: #ffc9c0;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+*, *:before, *:after {
+    /* prevents padding from affecting height and width */
+    box-sizing: border-box;
+}
+.cs-title {
+    font-size: var(--textsizeBig);
+    font-weight: 900;
+    line-height: 1.2em;
+    text-align: inherit;
+    max-width: 43.75rem;
+    margin: 0 0 1rem 0;
+    color: var(--textLight);
+    position: relative;
+}
+.cs-text {
+    font-size: var(--textsizeReg);
+    line-height: 1.5em;
+    text-align: inherit;
+    width: 100%;
+    max-width: 40.625rem;
+    margin: 0;
+    color: var(--textDark);
+}
+/* Mobile - 360px */
+@media only screen and (min-width: 0rem) {
+  #gallery {
+    padding: var(--sectionPadding);
+    background-color: var(--backgroundClear);
+    /* stops the cs-graphics from causing an overflow */
+    overflow: scroll;
+    position: relative;
+    height: 100%;
+  }
+  #gallery .cs-container {
+    width: 100%;
+    max-width: 100%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    height: 100%;
+  }
+  #gallery .cs-content {
+    text-align: center;
+    width: 100%;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1;
+  }
+  #gallery .cs-title {
+    max-width: 25ch;
+    margin: 0;
+  }
+  #gallery .cs-button-solid {
+    font-size: 1rem;
+    font-weight: 700;
+    font-family: 'Playpen Sans';
+    /* 46px - 56px */
+    line-height: clamp(2.875em, 5.5vw, 3.5em);
+    text-align: center;
+    text-decoration: none;
+    min-width: 9.375rem;
+    margin: 0;
+    /* prevents padding from adding to the width */
+    box-sizing: border-box;
+    padding: 0 1.5rem;
+    background-color: var(--backgroundColor);
+    overflow: hidden;
+    color: #fff;
+    border: none;
+    border-radius: 0.25rem;
+    display: inline-block;
+    position: relative;
+    z-index: 1;
+    transition: color 0.3s;
+  }
+  #gallery .cs-button-solid:before {
+    content: "";
+    width: 0;
+    height: 100%;
+    background: #000;
+    opacity: 1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transition: width 0.3s;
+  }
+  #gallery .cs-button-solid:hover {
+    color: #fff;
+  }
+  #gallery .cs-button-solid:hover:before {
+    width: 100%;
+  }
+  #gallery .cs-gallery {
+    width: 100%;
+    /* display: grid;*/
+    grid-auto-flow: row;
+    /* FULL PAGE GUTTERS */
+    gap: 0px;
+    z-index: 1;
+    max-width: 100%;
+    padding-right: 100;
+  }
+
+/* GUY I LIKE */
+    #gallery .cs-item {
+        background-color: var(--backgroundColor);
+        box-shadow: 0 0 8px 2px var(--shadowColor); 
+        justify-content: center;
+        /*display: grid;*/
+        display:inline-grid;
+        /* max-width: clamp(655px, 655px, 655px); */
+        aspect-ratio: 1 / 0.52;
+        width: 100%;
+        max-width: 560px;
+        /* PADDING (CONTAINER) */
+        padding: 1vw;
+        padding-left: 1vw;
+        padding-bottom: 0vw;
+        margin-top: 0.75vw; 
+        margin-right: 0.25vw;
+        /* CORNER ROUNDING (CONTAINER) */
+        border-radius: 16px;
+        /* IMG2IMG GUTTERS */
+        column-gap: 8px;
+        /* IMG BOTTOM MARGIN */
+        row-gap: 1vw;      
+    }
+
+/* MODAL VERSIONS */
+#gallery .cs-itemModal {
+        background-color: var(--backgroundColor);
+        box-shadow: 0 0 8px 2px var(--shadowColor); 
+        justify-content: center;
+        /*display: grid;*/
+        display:inline-grid;
+        /* max-width: clamp(655px, 655px, 655px); */
+        aspect-ratio: 1 / 0.52;
+        width: 100%;
+        max-width: 100%;
+        /* PADDING (CONTAINER) */
+        padding: 1vw;
+        padding-left: 1vw;
+        padding-bottom: 0vw;
+        margin-top: 0.75vw; 
+        margin-right: 0.25vw;
+        /* CORNER ROUNDING (CONTAINER) */
+        border-radius: 16px;
+        /* IMG2IMG GUTTERS */
+        column-gap: 8px;
+        /* IMG BOTTOM MARGIN */
+        row-gap: 1vw;      
+    }
+
+#gallery .cs-item2 {
+        background-color: var(--backgroundColorSolid);
+        box-shadow: 0 0 8px 2px var(--shadowColor); 
+        justify-content: center;
+        /*display: grid;*/
+        /* max-width: clamp(655px, 655px, 655px); */
+        width: 100%;
+        max-width: 100%;
+        /* PADDING (CONTAINER) */
+        padding-left: 2.5vw;
+        padding-right: 2.5vw;
+        padding-bottom: 1.9vw;
+        padding-top: 1.9vw;
+        margin-top: 0.75vw; 
+        margin-right: 0.25vw;
+        /* CORNER ROUNDING (CONTAINER) */
+        border-radius: 16px;
+        /* IMG2IMG GUTTERS */
+        column-gap: 8px;
+        /* IMG BOTTOM MARGIN */
+        row-gap: 1vw;      
+        line-height: 1rem;
+        font-family: Arial;
+    }
+
+/* PAIR TITLE */
+  #gallery .cs-item-text {
+    font-size: 16px;
+    font-weight: 700;
+    font-family: 'Playpen Sans';
+    line-height: 1.2em;
+    margin: 0;
+    color: var(--textLight);
+    grid-column: span 2;
+  }
+  #gallery .cs-picture-group {
+    /* height: clamp(267px, 267px, 267px);
+    width: clamp(267px, 267px, 267px); */
+    overflow: hidden;
+    border-radius: 1rem;
+    grid-column: span 1;
+    position: relative;
+    box-shadow: 0 0 0px 2px var(--outlineColor);
+    aspect-ratio: 2 / 1.25;
+    height: 123%;
+    width: 100%;
+  }
+  #gallery .cs-picture {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+  #gallery .cs-picture img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+/* BEFORE/AFTER FLOATING ICONS */
+  #gallery .cs-tag {
+    font-size: 0.875rem;
+    line-height: 1.3em;
+    font-family: 'Arial';
+    padding: 0.15rem 0.35rem;
+    background: var(--backgroundButton);
+    color: var(--textLightest);
+    border: 1px solid var(--outlineButton);
+    border-radius: 1.875rem;
+    /* 
+    position: absolute;
+    bottom: 14.8rem; 
+    left: 0.3rem;
+    */
+    backdrop-filter: blur(8px);
+    position: absolute;
+    top: 0.4rem;
+    left: 0.95rem;
+    margin-left: -10px;
+    transform: none;
+  }
+  a {
+    color: var(--textButton);
+    text-decoration:none;
+    }
+
+}
+/* Tablet - 600px */
+@media only screen and (min-width: 37.5rem) {
+  #gallery .cs-content {
+    text-align: left;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+  #gallery .cs-gallery {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+}
+/* Desktop - 1600px */
+@media only screen and (min-width: 100rem) {
+
+}
+
+* {box-sizing: border-box}
+body {font-family: "Playpen Sans";}
+
+/* Style the tab */
+.tab {
+  float: left;
+  border: 1px solid var(--textDark);
+  background-color: var(--sidebarColor);
+  width: 100px;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 1;
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+  display: block;
+  background-color: inherit;
+  color: var(--textDark);
+  padding: 10px 0px;
+  width: 100%;
+  border: none;
+  outline: none;
+  text-align: center;
+  cursor: pointer;
+  transition: 0.3s;
+  font-size: 17px;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: var(--sidebarHighlightLess);
+}
+
+/* Create an active/current "tab button" class */
+.tab button.active {
+  background-color: var(--sidebarHighlight);
+}
+
+/* Style the tab content */
+.tabcontent {
+  float: left;
+  padding: 0px 0px;
+  width: 100%;
+  border-left: none;
+  margin-left: 100px;
+  max-width: 100%;
+  width: 100%;
+}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: var(--backgroundButton); /* Fallback color */
+  background-color: var(--backgroundButton); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: var(--backgroundopaque);
+  margin: auto;
+  margin-bottom: 100px;
+  margin-top: -50px;
+  padding: 15px;
+  border: 1px solid var(--outlineButton);
+  width: 95%;
+  max-width: 750px;
+  height: auto;
+  border-radius: 1.875rem;
+  /* padding-left: 25px; */
+  font-size: 0.95rem;
+  color: var(--textDark);
+}
+
+/* The Close Button */
+.close {
+  float: right;
+  position: absolute;
+  margin-top: -34;
+  margin-left: 40;
+  width: 80%;
+  max-width: 45rem;
+  font-size: 2rem;
+  font-weight: bold;
+  background: var(--backgroundClear);
+  color: var(--Raspberry);
+  text-align: right;
+  z-index: 1;
+}
+
+.closeButton {
+  font-size: 2rem;
+  font-weight: bold;
+  background: var(--Raspberry);
+  color: var(--backgroundopaque);
+  border: 1px solid var(--outlineButton);
+  border-radius: 1.875rem;
+  padding-left: 13;
+  padding-right: 13;
+}
+
+.close:hover,
+.close:focus {
+  color: var(--outlineColor);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+  #gallery .cs-tagButton {
+    font-size: 1rem;
+    line-height: 1.3em;
+    font-family: 'Playpen Sans';
+    padding: 0.15rem 0.35rem;
+    background: var(--backgroundopaque);
+    color: var(--textBrown);
+    border: 1px solid var(--backgroundopaque);
+    border-radius: 1.875rem; 
+    /*
+    bottom: 14.8rem; 
+    */
+    backdrop-filter: blur(8px);
+    position: absolute;
+    /*
+    top: 0.4rem;
+    left: 0.95rem;
+    margin-left: -10px;
+    */
+    transform: none;
+  }
+
+  .DescriptionButton{
+    font-size: 0.875rem;
+    line-height: 1.3em;
+    font-family: 'Playpen Sans';
+    padding: 0.15rem 0.35rem;
+    background: #782b421c;
+    color: var(--textLightest);
+    border: 1px solid var(--outlineBrighter);
+    border-radius: 1.875rem;
+    backdrop-filter: blur(8px);
+    position: absolute;
+    bottom: 0.4rem;
+    left: 0.95rem;
+    margin-left: -10px;
+    transform: none;
+  }
+
+</style>
+</head>
+<body>
+<section id="gallery">
+<div class="cs-container">
+<div class="content">
+<div class="cs-content">
+
+ <div class="tab">
+  <button class="active" onclick="openCity(event, '2025')"id="defaultOpen"><a href="2025.html"><img src="https://i.gyazo.com/ea80b06c6db8770fc0df9b799feb540b.png"></a></button>
+  <button class="tablinks"><a href="2024.html"><img src="https://i.gyazo.com/b44334e2bdc97c2d948cea650966daa8.png"></a></button>
+  <button class="tablinks"><a href="2023.html"><img src="https://i.gyazo.com/d3ac56e2855b096e6dfbd01aa9971f54.png"></a></button>
+  <button class="tablinks"><a href="2022.html"><img src="https://i.gyazo.com/4dc7f4235d8d920502ed821b615a499e.png"></a></button>
+  <button class="tablinks"><a href="2021.html"><img src="https://i.gyazo.com/c8a2fe3311946874a184e6a94caa5519.png"></a></button>
+  <button class="tablinks"><a href="2021S.html"><img src="https://i.gyazo.com/e5da83607be19f001d94faafe8b27589.png"></a></button>
+</div>
+
+<div id="2025" class="tabcontent">
+<div class="cs-gallery" align="center">
+xxx
+</div>
+
+</div>
+
+</div>
+</div>
+</section>
+</div>
+
+<script>
+// MODAL
+document.addEventListener('click', function(event) {
+  // Open modal when clicking buttons
+  if (event.target.classList.contains('DescriptionButton')) {
+    const modalId = event.target.getAttribute('data-modal');
+    const modal = document.getElementById(modalId);
+    modal.style.display = 'block';
+  }
+  
+  // Close modal when clicking close buttons
+  if (event.target.classList.contains('closeButton')) {
+    const modal = event.target.closest('.modal');
+    modal.style.display = 'none';
+  }
+  
+  // Close modal when clicking outside
+  if (event.target.classList.contains('modal')) {
+    event.target.style.display = 'none';
+  }
+});
+
+</script>
+
+</body>
+</html>

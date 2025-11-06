@@ -1,0 +1,1634 @@
+<html>
+<head>
+    <link href='https://fonts.googleapis.com/css?family=Playpen Sans' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+:root {
+    /* Add these styles to your global stylesheet, which is used across all site pages. You only need to do this once. All elements in the library derive their variables and base styles from this central sheet, simplifying site-wide edits. For instance, if you want to modify how your h2's appear across the site, you just update it once in the global styles, and the changes apply everywhere. */
+    --textLight: #782B42;
+    --textLightest: #fff0e7;
+    --textDark: #4B1C2C;
+    --textButton: #fff9f0;
+    --backgroundClear: #FFFFFF00; /* FFFFFF00 */
+    --backgroundColor: #FFEAC952;
+    --backgroundColorSolid: #f5dbc3;
+    --backgroundopaque: #e0beb0;
+    --backgroundButton: #22171b49;
+    --outlineButton: #22131849;
+    --outlineBrighter: #f89c9649;
+    --shadowColor: #4A1B2B59;
+    --outlineColor: #8b6166;
+    --sidebarColor: #D7947B5E;
+    --sidebarHighlight: #ECCCAF;
+    --sidebarHighlightLess: #ecccaf7c;
+    --Raspberry: #782B42;
+    --textBrown: #66302c;
+    /* 31px - 49px */
+    --textsizeBig: clamp(1.9375rem, 3.9vw, 3.0625rem);
+    --textsizeReg: 1rem;
+    --sectionPadding: 0px;
+}
+hr {
+  border-color: #ffc9c0;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+*, *:before, *:after {
+    /* prevents padding from affecting height and width */
+    box-sizing: border-box;
+}
+.cs-title {
+    font-size: var(--textsizeBig);
+    font-weight: 900;
+    line-height: 1.2em;
+    text-align: inherit;
+    max-width: 43.75rem;
+    margin: 0 0 1rem 0;
+    color: var(--textLight);
+    position: relative;
+}
+.cs-text {
+    font-size: var(--textsizeReg);
+    line-height: 1.5em;
+    text-align: inherit;
+    width: 100%;
+    max-width: 40.625rem;
+    margin: 0;
+    color: var(--textDark);
+}
+/* Mobile - 360px */
+@media only screen and (min-width: 0rem) {
+  #gallery {
+    padding: var(--sectionPadding);
+    background-color: var(--backgroundClear);
+    /* stops the cs-graphics from causing an overflow */
+    overflow: scroll;
+    position: relative;
+    height: 100%;
+  }
+  #gallery .cs-container {
+    width: 100%;
+    max-width: 100%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    height: 100%;
+  }
+  #gallery .cs-content {
+    text-align: center;
+    width: 100%;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1;
+  }
+  #gallery .cs-title {
+    max-width: 25ch;
+    margin: 0;
+  }
+  #gallery .cs-button-solid {
+    font-size: 1rem;
+    font-weight: 700;
+    font-family: 'Playpen Sans';
+    /* 46px - 56px */
+    line-height: clamp(2.875em, 5.5vw, 3.5em);
+    text-align: center;
+    text-decoration: none;
+    min-width: 9.375rem;
+    margin: 0;
+    /* prevents padding from adding to the width */
+    box-sizing: border-box;
+    padding: 0 1.5rem;
+    background-color: var(--backgroundColor);
+    overflow: hidden;
+    color: #fff;
+    border: none;
+    border-radius: 0.25rem;
+    display: inline-block;
+    position: relative;
+    z-index: 1;
+    transition: color 0.3s;
+  }
+  #gallery .cs-button-solid:before {
+    content: "";
+    width: 0;
+    height: 100%;
+    background: #000;
+    opacity: 1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transition: width 0.3s;
+  }
+  #gallery .cs-button-solid:hover {
+    color: #fff;
+  }
+  #gallery .cs-button-solid:hover:before {
+    width: 100%;
+  }
+  #gallery .cs-gallery {
+    width: 100%;
+    /* display: grid;*/
+    grid-auto-flow: row;
+    /* FULL PAGE GUTTERS */
+    gap: 0px;
+    z-index: 1;
+    max-width: 100%;
+    padding-right: 100;
+  }
+
+/* GUY I LIKE */
+    #gallery .cs-item {
+        background-color: var(--backgroundColor);
+        box-shadow: 0 0 8px 2px var(--shadowColor); 
+        justify-content: center;
+        /*display: grid;*/
+        display:inline-grid;
+        /* max-width: clamp(655px, 655px, 655px); */
+        aspect-ratio: 1 / 0.52;
+        width: 100%;
+        max-width: 560px;
+        /* PADDING (CONTAINER) */
+        padding: 1vw;
+        padding-left: 1vw;
+        padding-bottom: 0vw;
+        margin-top: 0.75vw; 
+        margin-right: 0.25vw;
+        /* CORNER ROUNDING (CONTAINER) */
+        border-radius: 16px;
+        /* IMG2IMG GUTTERS */
+        column-gap: 8px;
+        /* IMG BOTTOM MARGIN */
+        row-gap: 1vw;      
+    }
+
+/* MODAL VERSIONS */
+#gallery .cs-itemModal {
+        background-color: var(--backgroundColor);
+        box-shadow: 0 0 8px 2px var(--shadowColor); 
+        justify-content: center;
+        /*display: grid;*/
+        display:inline-grid;
+        /* max-width: clamp(655px, 655px, 655px); */
+        aspect-ratio: 1 / 0.52;
+        width: 100%;
+        max-width: 100%;
+        /* PADDING (CONTAINER) */
+        padding: 1vw;
+        padding-left: 1vw;
+        padding-bottom: 0vw;
+        margin-top: 0.75vw; 
+        margin-right: 0.25vw;
+        /* CORNER ROUNDING (CONTAINER) */
+        border-radius: 16px;
+        /* IMG2IMG GUTTERS */
+        column-gap: 8px;
+        /* IMG BOTTOM MARGIN */
+        row-gap: 1vw;      
+    }
+
+#gallery .cs-item2 {
+        background-color: var(--backgroundColorSolid);
+        box-shadow: 0 0 8px 2px var(--shadowColor); 
+        justify-content: center;
+        /*display: grid;*/
+        /* max-width: clamp(655px, 655px, 655px); */
+        width: 100%;
+        max-width: 100%;
+        /* PADDING (CONTAINER) */
+        padding-left: 2.5vw;
+        padding-right: 2.5vw;
+        padding-bottom: 1.9vw;
+        padding-top: 1.9vw;
+        margin-top: 0.75vw; 
+        margin-right: 0.25vw;
+        /* CORNER ROUNDING (CONTAINER) */
+        border-radius: 16px;
+        /* IMG2IMG GUTTERS */
+        column-gap: 8px;
+        /* IMG BOTTOM MARGIN */
+        row-gap: 1vw;      
+        line-height: 1rem;
+        font-family: Arial;
+    }
+
+/* PAIR TITLE */
+  #gallery .cs-item-text {
+    font-size: 16px;
+    font-weight: 700;
+    font-family: 'Playpen Sans';
+    line-height: 1.2em;
+    margin: 0;
+    color: var(--textLight);
+    grid-column: span 2;
+  }
+  #gallery .cs-picture-group {
+    /* height: clamp(267px, 267px, 267px);
+    width: clamp(267px, 267px, 267px); */
+    overflow: hidden;
+    border-radius: 1rem;
+    grid-column: span 1;
+    position: relative;
+    box-shadow: 0 0 0px 2px var(--outlineColor);
+    aspect-ratio: 2 / 1.25;
+    height: 123%;
+    width: 100%;
+  }
+  #gallery .cs-picture {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+  #gallery .cs-picture img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+/* BEFORE/AFTER FLOATING ICONS */
+  #gallery .cs-tag {
+    font-size: 0.875rem;
+    line-height: 1.3em;
+    font-family: 'Arial';
+    padding: 0.15rem 0.35rem;
+    background: var(--backgroundButton);
+    color: var(--textLightest);
+    border: 1px solid var(--outlineButton);
+    border-radius: 1.875rem;
+    /* 
+    position: absolute;
+    bottom: 14.8rem; 
+    left: 0.3rem;
+    */
+    backdrop-filter: blur(8px);
+    position: absolute;
+    top: 0.4rem;
+    left: 0.95rem;
+    margin-left: -10px;
+    transform: none;
+  }
+  a {
+    color: var(--textButton);
+    text-decoration:none;
+    }
+
+}
+/* Tablet - 600px */
+@media only screen and (min-width: 37.5rem) {
+  #gallery .cs-content {
+    text-align: left;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+  #gallery .cs-gallery {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+}
+/* Desktop - 1600px */
+@media only screen and (min-width: 100rem) {
+
+}
+
+* {box-sizing: border-box}
+body {font-family: "Playpen Sans";}
+
+/* Style the tab */
+.tab {
+  float: left;
+  border: 1px solid var(--textDark);
+  background-color: var(--sidebarColor);
+  width: 100px;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 1;
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+  display: block;
+  background-color: inherit;
+  color: var(--textDark);
+  padding: 10px 0px;
+  width: 100%;
+  border: none;
+  outline: none;
+  text-align: center;
+  cursor: pointer;
+  transition: 0.3s;
+  font-size: 17px;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: var(--sidebarHighlightLess);
+}
+
+/* Create an active/current "tab button" class */
+.tab button.active {
+  background-color: var(--sidebarHighlight);
+}
+
+/* Style the tab content */
+.tabcontent {
+  float: left;
+  padding: 0px 0px;
+  width: 100%;
+  border-left: none;
+  margin-left: 100px;
+  max-width: 100%;
+  width: 100%;
+}
+
+/* 
+@media only screen and (max-width: 768px) {
+  .tabcontent {
+    margin-left: 0;
+    max-width: 100%;
+  }
+  
+  .tab {
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+  
+  .tab button {
+    display: inline-block;
+    width: auto;
+    padding: 10px 15px;
+  } 
+}
+*/
+
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: var(--backgroundButton); /* Fallback color */
+  background-color: var(--backgroundButton); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: var(--backgroundopaque);
+  margin: auto;
+  margin-bottom: 100px;
+  margin-top: -50px;
+  padding: 15px;
+  border: 1px solid var(--outlineButton);
+  width: 95%;
+  max-width: 750px;
+  height: auto;
+  border-radius: 1.875rem;
+  /* padding-left: 25px; */
+  font-size: 0.95rem;
+  color: var(--textDark);
+}
+
+/* The Close Button */
+.close {
+  float: right;
+  position: absolute;
+  margin-top: -34;
+  margin-left: 40;
+  width: 80%;
+  max-width: 45rem;
+  font-size: 2rem;
+  font-weight: bold;
+  background: var(--backgroundClear);
+  color: var(--Raspberry);
+  text-align: right;
+  z-index: 1;
+}
+
+.closeButton {
+  font-size: 2rem;
+  font-weight: bold;
+  background: var(--Raspberry);
+  color: var(--backgroundopaque);
+  border: 1px solid var(--outlineButton);
+  border-radius: 1.875rem;
+  padding-left: 13;
+  padding-right: 13;
+}
+
+.close:hover,
+.close:focus {
+  color: var(--outlineColor);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+  #gallery .cs-tagButton {
+    font-size: 1rem;
+    line-height: 1.3em;
+    font-family: 'Playpen Sans';
+    padding: 0.15rem 0.35rem;
+    background: var(--backgroundopaque);
+    color: var(--textBrown);
+    border: 1px solid var(--backgroundopaque);
+    border-radius: 1.875rem; 
+    /*
+    bottom: 14.8rem; 
+    */
+    backdrop-filter: blur(8px);
+    position: absolute;
+    /*
+    top: 0.4rem;
+    left: 0.95rem;
+    margin-left: -10px;
+    */
+    transform: none;
+  }
+
+  .DescriptionButton{
+    font-size: 0.875rem;
+    line-height: 1.3em;
+    font-family: 'Playpen Sans';
+    padding: 0.15rem 0.35rem;
+    background: #782b421c;
+    color: var(--textLightest);
+    border: 1px solid var(--outlineBrighter);
+    border-radius: 1.875rem;
+    backdrop-filter: blur(8px);
+    position: absolute;
+    bottom: 0.4rem;
+    left: 0.95rem;
+    margin-left: -10px;
+    transform: none;
+  }
+
+</style>
+</head>
+<body>
+<section id="gallery">
+<div class="cs-container">
+<div class="content">
+<div class="cs-content">
+
+ <div class="tab">
+  <button class="tablinks"><a href="2025.html"><img src="https://i.gyazo.com/ea80b06c6db8770fc0df9b799feb540b.png"></a></button>
+  <button class="tablinks"><a href="2024.html"><img src="https://i.gyazo.com/b44334e2bdc97c2d948cea650966daa8.png"></a></button>
+  <button class="tablinks"><a href="2023.html"><img src="https://i.gyazo.com/d3ac56e2855b096e6dfbd01aa9971f54.png"></a></button>
+  <button class="tablinks"><a href="2022.html"><img src="https://i.gyazo.com/4dc7f4235d8d920502ed821b615a499e.png"></a></button>
+  <button class="active" onclick="openCity(event, '2021')"id="defaultOpen"><img src="https://i.gyazo.com/c8a2fe3311946874a184e6a94caa5519.png"></button>
+  <button class="tablinks"><a href="2021S.html"><img src="https://i.gyazo.com/e5da83607be19f001d94faafe8b27589.png"></a></button>
+</div>
+
+<div id="2021" class="tabcontent">
+  <div align="center" style="padding-right: 110px; padding-left: 10px;">
+<button class="DescriptionButton" data-modal="AINote" style="padding: 3px; padding-left: 10px; padding-right: 10px; background: var(--sidebarColor); color: var(--Raspberry); backdrop-filter: blur(1px); margin-left: 0px; bottom: 0; left: 0; position: unset; font-weight: bold; margin:15px;">Click here for a note regarding AI images!</button>
+<div id="AINote" class="modal">
+         <div class="modal-content">
+          <span class="Noteclose"><span class="closeButton">&times;</span></span>
+            <div class="cs-item2" align="left"><b>As of the 2025 swap, we have implemented a strict rule against the use of generative AI imagery in moodboards.</b> Prior to the 2025 swap, you will find some moodboards in these galleries featuring such content; these participants broke no rule, because none existed at the time. We keep these moodboards displayed, despite this change in policy, for the sake of the dice made to go with them, as <i>that</i> is the work of very skilled humans worth celebrating. Seeing how a maker interpreted a moodboard and created dice based off of it is the fun part of browsing these galleries, and participants who made dice for a moodboard containing AI imagery deserve to be a part of that celebration of their very real, very human creation just as much as everyone else.
+            <br>
+            <br>Runners of these swaps (and the Dicemakers Guild as a whole) deeply value and respect human artists; we <i>are</i> human artists! We believe the pushback on generative AI is not only valid, but necessary; this technology has proven harmful to human society, the integrity of creative spaces, and the environment itself. (Articles/posts like <a href="https://www.corralldesign.com/writing/ai-harm-hypocrisy" style="color: #782B42; font-weight: bold;">this</a> or <a href="https://www.instagram.com/p/DPfEY38jle0" style="color: #782B42; font-weight: bold;">this</a> can explain specifics, if you're unfamiliar!)
+            <br>
+            <br>When we know better, we do better; many of us in years past were simply ignorant to the scope of that harm, and learning better has fully redefined what is tolerable. We ask that you browse prior swaps with this in mind, and extend grace to the participants who involved AI content, knowing our standards moving forward have evolved.
+            <br>
+            <br><b>All swaps from 2025 and beyond will uphold an unwavering No-AI policy, with no exceptions.</b> ♡
+        </div>
+		</div>
+</div>
+    </div>
+<div class="cs-gallery" align="center">
+    
+<!-- [01]DaarkaArts <- Fernscale --><div class="cs-item" align="left">
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/082ce9d3521d75b92e142af7de51b69a.png"><img src="https://i.gyazo.com/da7bc3f69aa8a6124b5cf0f8e423a4b2.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/DaarkaArts">@DaarkaArts</a></span>
+										<button class="DescriptionButton" data-modal="Modal2021DaarkaArts">Details</button>
+                </div>
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/thumb/1000/7180d3fe172d71b1811532d4c18fd0de-png.jpg"><img src="https://i.gyazo.com/d7f9ff6f40b77d8bef196bb045d8def6.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/Fernscale">@Fernscale</a></span>
+                </div>
+            <p class="cs-item-text"></p>
+</div><!--MODAL--><div id="Modal2021DaarkaArts" class="modal">
+         <div class="modal-content">
+          <span class="close"><span class="closeButton">&times;</span></span>
+        <div class="cs-itemModal" align="left">
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/082ce9d3521d75b92e142af7de51b69a.png"><img src="https://i.gyazo.com/da7bc3f69aa8a6124b5cf0f8e423a4b2.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/DaarkaArts">@DaarkaArts</a></span>
+                </div>
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/thumb/1000/7180d3fe172d71b1811532d4c18fd0de-png.jpg"><img src="https://i.gyazo.com/d7f9ff6f40b77d8bef196bb045d8def6.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/Fernscale">@Fernscale</a></span>
+                </div>
+            <p class="cs-item-text"></p>
+        </div>
+            <div class="cs-item2" align="left"><span class="cs-tagButton"><b>Moodboard Description</b></span></br>
+            <p></p></div>
+		</div>
+<!-- / [01]DaarkaArts <- Fernscale --></div>
+
+
+<!-- [02]Ravensblood_Studio <- OlympusForgeDice --><div class="cs-item" align="left">
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/015e41cd3f85dc9a2bfb614dfb24597b.png"><img src="https://i.gyazo.com/35bce6d8647270e0441cc292d8f91fe2.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/Ravensblood_Studio">@Ravensblood_Studio</a></span>
+										<button class="DescriptionButton" data-modal="Modal2021Ravensblood_Studio">Details</button>
+                </div>
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/03f1c7ef6f9a81f35abe65820bac239a.png"><img src="https://i.gyazo.com/23f1a55dca86c553c4ce0ceb890429fa.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/OlympusForgeDice">@OlympusForgeDice</a></span>
+                </div>
+            <p class="cs-item-text"></p>
+</div><!--MODAL--><div id="Modal2021Ravensblood_Studio" class="modal">
+         <div class="modal-content">
+          <span class="close"><span class="closeButton">&times;</span></span>
+        <div class="cs-itemModal" align="left">
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/015e41cd3f85dc9a2bfb614dfb24597b.png"><img src="https://i.gyazo.com/35bce6d8647270e0441cc292d8f91fe2.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/Ravensblood_Studio">@Ravensblood_Studio</a></span>
+                </div>
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/03f1c7ef6f9a81f35abe65820bac239a.png"><img src="https://i.gyazo.com/23f1a55dca86c553c4ce0ceb890429fa.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/OlympusForgeDice">@OlympusForgeDice</a></span>
+                </div>
+            <p class="cs-item-text"></p>
+        </div>
+            <div class="cs-item2" align="left"><span class="cs-tagButton"><b>Moodboard Description</b></span></br>
+            <p></p></div>
+		</div>
+<!-- / [02]Ravensblood_Studio <- OlympusForgeDice --></div>
+
+
+<!-- [03]TheSunflowerEmporium <- RotwyrmOddities --><div class="cs-item" align="left">
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/5015f2b2b66327d030ad042d3246062a.png"><img src="https://i.gyazo.com/40d8af5a756e29e6cd21889ae6f8401d.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/TheSunflowerEmporium">@TheSunflowerEmporium</a></span>
+										<button class="DescriptionButton" data-modal="Modal2021TheSunflowerEmporium">Details</button>
+                </div>
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/9fefaa33c7e441c87cd3ecd803b2e1e8.png"><img src="https://i.gyazo.com/6c65274ad0b9f84577eef6beb7cedb21.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/RotwyrmOddities">@RotwyrmOddities</a></span>
+                </div>
+            <p class="cs-item-text"></p>
+</div><!--MODAL--><div id="Modal2021TheSunflowerEmporium" class="modal">
+         <div class="modal-content">
+          <span class="close"><span class="closeButton">&times;</span></span>
+        <div class="cs-itemModal" align="left">
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/5015f2b2b66327d030ad042d3246062a.png"><img src="https://i.gyazo.com/40d8af5a756e29e6cd21889ae6f8401d.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/TheSunflowerEmporium">@TheSunflowerEmporium</a></span>
+                </div>
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/9fefaa33c7e441c87cd3ecd803b2e1e8.png"><img src="https://i.gyazo.com/6c65274ad0b9f84577eef6beb7cedb21.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/RotwyrmOddities">@RotwyrmOddities</a></span>
+                </div>
+            <p class="cs-item-text"></p>
+        </div>
+            <div class="cs-item2" align="left"><span class="cs-tagButton"><b>Moodboard Description</b></span></br>
+            <p></p></div>
+		</div>
+<!-- / [03]TheSunflowerEmporium <- RotwyrmOddities --></div>
+
+
+<!-- [04]LycanTracksDice <- TheSunflowerEmporium --><div class="cs-item" align="left">
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/07502e5c1586cf43bc24834dd255a38d.png"><img src="https://i.gyazo.com/b0ef8664cf1b4949592db0506a93fc28.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/LycanTracksDice">@LycanTracksDice</a></span>
+										<button class="DescriptionButton" data-modal="Modal2021LycanTracksDice">Details</button>
+                </div>
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/e64892accb28e9b501024b63deeac8c4.jpg"><img src="https://i.gyazo.com/a18fdf50e21099f15773862f2e762a48.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/TheSunflowerEmporium">@TheSunflowerEmporium</a></span>
+                </div>
+            <p class="cs-item-text"></p>
+</div><!--MODAL--><div id="Modal2021LycanTracksDice" class="modal">
+         <div class="modal-content">
+          <span class="close"><span class="closeButton">&times;</span></span>
+        <div class="cs-itemModal" align="left">
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/07502e5c1586cf43bc24834dd255a38d.png"><img src="https://i.gyazo.com/b0ef8664cf1b4949592db0506a93fc28.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/LycanTracksDice">@LycanTracksDice</a></span>
+                </div>
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/e64892accb28e9b501024b63deeac8c4.jpg"><img src="https://i.gyazo.com/a18fdf50e21099f15773862f2e762a48.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/TheSunflowerEmporium">@TheSunflowerEmporium</a></span>
+                </div>
+            <p class="cs-item-text"></p>
+        </div>
+            <div class="cs-item2" align="left"><span class="cs-tagButton"><b>Moodboard Description</b></span></br>
+            <p></p></div>
+		</div>
+<!-- / [04]LycanTracksDice <- TheSunflowerEmporium --></div>
+
+
+<!-- [05]CrystalRole <- NonagonDice --><div class="cs-item" align="left">
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/ce5fda0a486c4460bebc50647218f532.png"><img src="https://i.gyazo.com/caf62fb16ab8b78eb9499eef3949dc42.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/CrystalRole">@CrystalRole</a></span>
+										<button class="DescriptionButton" data-modal="Modal2021CrystalRole">Details</button>
+                </div>
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/thumb/1000/5d5e5e88ae0deb9993e2fceab26fa1ed-png.jpg"><img src="https://i.gyazo.com/a2e7c01b89aa4322f08a216e380800c0.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/NonagonDice">@NonagonDice</a></span>
+                </div>
+            <p class="cs-item-text"></p>
+</div><!--MODAL--><div id="Modal2021CrystalRole" class="modal">
+         <div class="modal-content">
+          <span class="close"><span class="closeButton">&times;</span></span>
+        <div class="cs-itemModal" align="left">
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/ce5fda0a486c4460bebc50647218f532.png"><img src="https://i.gyazo.com/caf62fb16ab8b78eb9499eef3949dc42.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/CrystalRole">@CrystalRole</a></span>
+                </div>
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/thumb/1000/5d5e5e88ae0deb9993e2fceab26fa1ed-png.jpg"><img src="https://i.gyazo.com/a2e7c01b89aa4322f08a216e380800c0.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/NonagonDice">@NonagonDice</a></span>
+                </div>
+            <p class="cs-item-text"></p>
+        </div>
+            <div class="cs-item2" align="left"><span class="cs-tagButton"><b>Moodboard Description</b></span></br>
+            <p></p></div>
+		</div>
+<!-- / [05]CrystalRole <- NonagonDice --></div>
+
+
+<!-- [06]CritCandyDice <- Arcane_Lizard_Crafts --><div class="cs-item" align="left">
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/6c287a4e6156c9863cf8788a43fe3cef.png"><img src="https://i.gyazo.com/ef46ab7cd7342aa98d3dfdfa8e59e153.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/CritCandyDice">@CritCandyDice</a></span>
+										<button class="DescriptionButton" data-modal="Modal2021CritCandyDice">Details</button>
+                </div>
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/480a2d7fd13b1e1265d1d033a6230122.png"><img src="https://i.gyazo.com/ac546bdcf8f051837d40a9b2f1ae4089.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/Arcane_Lizard_Crafts">@Arcane_Lizard_Crafts</a></span>
+                </div>
+            <p class="cs-item-text"></p>
+</div><!--MODAL--><div id="Modal2021CritCandyDice" class="modal">
+         <div class="modal-content">
+          <span class="close"><span class="closeButton">&times;</span></span>
+        <div class="cs-itemModal" align="left">
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/6c287a4e6156c9863cf8788a43fe3cef.png"><img src="https://i.gyazo.com/ef46ab7cd7342aa98d3dfdfa8e59e153.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/CritCandyDice">@CritCandyDice</a></span>
+                </div>
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/480a2d7fd13b1e1265d1d033a6230122.png"><img src="https://i.gyazo.com/ac546bdcf8f051837d40a9b2f1ae4089.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/Arcane_Lizard_Crafts">@Arcane_Lizard_Crafts</a></span>
+                </div>
+            <p class="cs-item-text"></p>
+        </div>
+            <div class="cs-item2" align="left"><span class="cs-tagButton"><b>Moodboard Description</b></span></br>
+            <p></p></div>
+		</div>
+<!-- / [06]CritCandyDice <- Arcane_Lizard_Crafts --></div>
+
+
+<!-- [07]RotwyrmOddities <- SeabrewCreations --><div class="cs-item" align="left">
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/95a7bd50e1f5f2007b4b6a360116f185.png"><img src="https://i.gyazo.com/d2148093e2987d510ad9eef4f9bfe189.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/RotwyrmOddities">@RotwyrmOddities</a></span>
+										<button class="DescriptionButton" data-modal="Modal2021RotwyrmOddities">Details</button>
+                </div>
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/51607f1778cfc9b70beade9dc9d2bfa1.png"><img src="https://i.gyazo.com/d4701b7eb8cf04ee24ccde23ddcfae90.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/SeabrewCreations">@SeabrewCreations</a></span>
+                </div>
+            <p class="cs-item-text"></p>
+</div><!--MODAL--><div id="Modal2021RotwyrmOddities" class="modal">
+         <div class="modal-content">
+          <span class="close"><span class="closeButton">&times;</span></span>
+        <div class="cs-itemModal" align="left">
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/95a7bd50e1f5f2007b4b6a360116f185.png"><img src="https://i.gyazo.com/d2148093e2987d510ad9eef4f9bfe189.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/RotwyrmOddities">@RotwyrmOddities</a></span>
+                </div>
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/51607f1778cfc9b70beade9dc9d2bfa1.png"><img src="https://i.gyazo.com/d4701b7eb8cf04ee24ccde23ddcfae90.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/SeabrewCreations">@SeabrewCreations</a></span>
+                </div>
+            <p class="cs-item-text"></p>
+        </div>
+            <div class="cs-item2" align="left"><span class="cs-tagButton"><b>Moodboard Description</b></span></br>
+            <p></p></div>
+		</div>
+<!-- / [07]RotwyrmOddities <- SeabrewCreations --></div>
+
+
+<!-- [08]Qweerosaurus <- Geckohedron --><div class="cs-item" align="left">
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/d8d1f3d8648e4c07353a5ceb374db863.png"><img src="https://i.gyazo.com/1023f2c67dd5815adda2be206d99be2e.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/Qweerosaurus">@Qweerosaurus</a></span>
+										<button class="DescriptionButton" data-modal="Modal2021Qweerosaurus">Details</button>
+                </div>
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/df47f7c023f5dd24dc960eb4fd67bd89.jpg"><img src="https://i.gyazo.com/22f93070f846f15459c6542e875c87db.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/Geckohedron">@Geckohedron</a></span>
+                </div>
+            <p class="cs-item-text"></p>
+</div><!--MODAL--><div id="Modal2021Qweerosaurus" class="modal">
+         <div class="modal-content">
+          <span class="close"><span class="closeButton">&times;</span></span>
+        <div class="cs-itemModal" align="left">
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/d8d1f3d8648e4c07353a5ceb374db863.png"><img src="https://i.gyazo.com/1023f2c67dd5815adda2be206d99be2e.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/Qweerosaurus">@Qweerosaurus</a></span>
+                </div>
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/df47f7c023f5dd24dc960eb4fd67bd89.jpg"><img src="https://i.gyazo.com/22f93070f846f15459c6542e875c87db.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/Geckohedron">@Geckohedron</a></span>
+                </div>
+            <p class="cs-item-text"></p>
+        </div>
+            <div class="cs-item2" align="left"><span class="cs-tagButton"><b>Moodboard Description</b></span></br>
+            <p></p></div>
+		</div>
+<!-- / [08]Qweerosaurus <- Geckohedron --></div>
+
+
+<!-- [09]Mirkwood_Dice <- MoonStruckDice --><div class="cs-item" align="left">
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/411a4f42614254af3a2b17729f8415c9.png"><img src="https://i.gyazo.com/ae788941f2deca5de72eac1235a37d15.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/Mirkwood_Dice">@Mirkwood_Dice</a></span>
+										<button class="DescriptionButton" data-modal="Modal2021Mirkwood_Dice">Details</button>
+                </div>
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/b5f65c8615e6bdd7d7ff25b60cb6f445.jpg"><img src="https://i.gyazo.com/728deca18a361d6ad8523e8a0aed21ad.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/MoonStruckDice">@MoonStruckDice</a></span>
+                </div>
+            <p class="cs-item-text"></p>
+</div><!--MODAL--><div id="Modal2021Mirkwood_Dice" class="modal">
+         <div class="modal-content">
+          <span class="close"><span class="closeButton">&times;</span></span>
+        <div class="cs-itemModal" align="left">
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/411a4f42614254af3a2b17729f8415c9.png"><img src="https://i.gyazo.com/ae788941f2deca5de72eac1235a37d15.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/Mirkwood_Dice">@Mirkwood_Dice</a></span>
+                </div>
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/b5f65c8615e6bdd7d7ff25b60cb6f445.jpg"><img src="https://i.gyazo.com/728deca18a361d6ad8523e8a0aed21ad.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/MoonStruckDice">@MoonStruckDice</a></span>
+                </div>
+            <p class="cs-item-text"></p>
+        </div>
+            <div class="cs-item2" align="left"><span class="cs-tagButton"><b>Moodboard Description</b></span></br>
+            <p></p></div>
+		</div>
+<!-- / [09]Mirkwood_Dice <- MoonStruckDice --></div>
+
+
+<!-- [10]Arcane_Lizard_Crafts <- CritCandyDice --><div class="cs-item" align="left">
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/thumb/1000/cd37bbc7b116a958800a72315c45cda5-png.jpg"><img src="https://i.gyazo.com/1ebcbd3b0b85b87f74951edd20668432.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/Arcane_Lizard_Crafts">@Arcane_Lizard_Crafts</a></span>
+										<button class="DescriptionButton" data-modal="Modal2021Arcane_Lizard_Crafts">Details</button>
+                </div>
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/9cadf9be9c21fadfce8d57ef708d8b40.jpg"><img src="https://i.gyazo.com/11793bc42595a40c6bc0e54ed5382479.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/CritCandyDice">@CritCandyDice</a></span>
+                </div>
+            <p class="cs-item-text"></p>
+</div><!--MODAL--><div id="Modal2021Arcane_Lizard_Crafts" class="modal">
+         <div class="modal-content">
+          <span class="close"><span class="closeButton">&times;</span></span>
+        <div class="cs-itemModal" align="left">
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/thumb/1000/cd37bbc7b116a958800a72315c45cda5-png.jpg"><img src="https://i.gyazo.com/1ebcbd3b0b85b87f74951edd20668432.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/Arcane_Lizard_Crafts">@Arcane_Lizard_Crafts</a></span>
+                </div>
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/9cadf9be9c21fadfce8d57ef708d8b40.jpg"><img src="https://i.gyazo.com/11793bc42595a40c6bc0e54ed5382479.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/CritCandyDice">@CritCandyDice</a></span>
+                </div>
+            <p class="cs-item-text"></p>
+        </div>
+            <div class="cs-item2" align="left"><span class="cs-tagButton"><b>Moodboard Description</b></span></br>
+            <p></p></div>
+		</div>
+<!-- / [10]Arcane_Lizard_Crafts <- CritCandyDice --></div>
+
+
+<!-- [11]MoonStruckDice <- BusyWizardDice --><div class="cs-item" align="left">
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/98e03780e4b822743b7c81aac892f9f1.png"><img src="https://i.gyazo.com/77ca256fc4d8c0b6a461fda5a3de39d8.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/MoonStruckDice">@MoonStruckDice</a></span>
+										<button class="DescriptionButton" data-modal="Modal2021MoonStruckDice">Details</button>
+                </div>
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/6e671d85db362ae67a2c3caa58d7b2fb.jpg"><img src="https://i.gyazo.com/d62b00085292070a3a9c1d54424b1fe0.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/BusyWizardDice">@BusyWizardDice</a></span>
+                </div>
+            <p class="cs-item-text"></p>
+</div><!--MODAL--><div id="Modal2021MoonStruckDice" class="modal">
+         <div class="modal-content">
+          <span class="close"><span class="closeButton">&times;</span></span>
+        <div class="cs-itemModal" align="left">
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/98e03780e4b822743b7c81aac892f9f1.png"><img src="https://i.gyazo.com/77ca256fc4d8c0b6a461fda5a3de39d8.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/MoonStruckDice">@MoonStruckDice</a></span>
+                </div>
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/6e671d85db362ae67a2c3caa58d7b2fb.jpg"><img src="https://i.gyazo.com/d62b00085292070a3a9c1d54424b1fe0.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/BusyWizardDice">@BusyWizardDice</a></span>
+                </div>
+            <p class="cs-item-text"></p>
+        </div>
+            <div class="cs-item2" align="left"><span class="cs-tagButton"><b>Moodboard Description</b></span></br>
+            <p></p></div>
+		</div>
+<!-- / [11]MoonStruckDice <- BusyWizardDice --></div>
+
+
+<!-- [12]KittyClacksDice <- ArcaneFeyCreations --><div class="cs-item" align="left">
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/06ebb8f8278c1fbce406aca4802e93ef.png"><img src="https://i.gyazo.com/b0507edf4c3701e5997d9438b9275266.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/KittyClacksDice">@KittyClacksDice</a></span>
+										<button class="DescriptionButton" data-modal="Modal2021KittyClacksDice">Details</button>
+                </div>
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/1754d76a7ac431fd7703d98096de2881.webp"><img src="https://i.gyazo.com/031b637ca9f085f195c120815d6c23d2.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/ArcaneFeyCreations">@ArcaneFeyCreations</a></span>
+                </div>
+            <p class="cs-item-text"></p>
+</div><!--MODAL--><div id="Modal2021KittyClacksDice" class="modal">
+         <div class="modal-content">
+          <span class="close"><span class="closeButton">&times;</span></span>
+        <div class="cs-itemModal" align="left">
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/06ebb8f8278c1fbce406aca4802e93ef.png"><img src="https://i.gyazo.com/b0507edf4c3701e5997d9438b9275266.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/KittyClacksDice">@KittyClacksDice</a></span>
+                </div>
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/1754d76a7ac431fd7703d98096de2881.webp"><img src="https://i.gyazo.com/031b637ca9f085f195c120815d6c23d2.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/ArcaneFeyCreations">@ArcaneFeyCreations</a></span>
+                </div>
+            <p class="cs-item-text"></p>
+        </div>
+            <div class="cs-item2" align="left"><span class="cs-tagButton"><b>Moodboard Description</b></span></br>
+            <p></p></div>
+		</div>
+<!-- / [12]KittyClacksDice <- ArcaneFeyCreations --></div>
+
+
+<!-- [13]SeabrewCreations <- CosmicCraftsStore --><div class="cs-item" align="left">
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/8c85a8ac7df24ec70e19e1b9129ac314.png"><img src="https://i.gyazo.com/f0079b1041ce6b09523775fa054e9718.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/SeabrewCreations">@SeabrewCreations</a></span>
+										<button class="DescriptionButton" data-modal="Modal2021SeabrewCreations">Details</button>
+                </div>
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/d0b3caf13b21c08cde5120a9569031ab.png"><img src="https://i.gyazo.com/1cbea71c1b9bca4a255192f5760ab08d.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/CosmicCraftsStore">@CosmicCraftsStore</a></span>
+                </div>
+            <p class="cs-item-text"></p>
+</div><!--MODAL--><div id="Modal2021SeabrewCreations" class="modal">
+         <div class="modal-content">
+          <span class="close"><span class="closeButton">&times;</span></span>
+        <div class="cs-itemModal" align="left">
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/8c85a8ac7df24ec70e19e1b9129ac314.png"><img src="https://i.gyazo.com/f0079b1041ce6b09523775fa054e9718.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/SeabrewCreations">@SeabrewCreations</a></span>
+                </div>
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/d0b3caf13b21c08cde5120a9569031ab.png"><img src="https://i.gyazo.com/1cbea71c1b9bca4a255192f5760ab08d.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/CosmicCraftsStore">@CosmicCraftsStore</a></span>
+                </div>
+            <p class="cs-item-text"></p>
+        </div>
+            <div class="cs-item2" align="left"><span class="cs-tagButton"><b>Moodboard Description</b></span></br>
+            <p></p></div>
+		</div>
+<!-- / [13]SeabrewCreations <- CosmicCraftsStore --></div>
+
+
+<!-- [14]DepartedDice <- CrystalRole --><div class="cs-item" align="left">
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/thumb/1000/238565c5c0d29ef99d76472b2ebed41e-png.jpg"><img src="https://i.gyazo.com/b3dc2a2bcbad4fc0aca75802e77c3cee.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/DepartedDice">@DepartedDice</a></span>
+										<button class="DescriptionButton" data-modal="Modal2021DepartedDice">Details</button>
+                </div>
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/654886b8299c922db924506dad4d59d1.png"><img src="https://i.gyazo.com/cf29384a7ff39329b1cbd0905afbd5fe.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/CrystalRole">@CrystalRole</a></span>
+                </div>
+            <p class="cs-item-text"></p>
+</div><!--MODAL--><div id="Modal2021DepartedDice" class="modal">
+         <div class="modal-content">
+          <span class="close"><span class="closeButton">&times;</span></span>
+        <div class="cs-itemModal" align="left">
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/thumb/1000/238565c5c0d29ef99d76472b2ebed41e-png.jpg"><img src="https://i.gyazo.com/b3dc2a2bcbad4fc0aca75802e77c3cee.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/DepartedDice">@DepartedDice</a></span>
+                </div>
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/654886b8299c922db924506dad4d59d1.png"><img src="https://i.gyazo.com/cf29384a7ff39329b1cbd0905afbd5fe.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/CrystalRole">@CrystalRole</a></span>
+                </div>
+            <p class="cs-item-text"></p>
+        </div>
+            <div class="cs-item2" align="left"><span class="cs-tagButton"><b>Moodboard Description</b></span></br>
+            <p></p></div>
+		</div>
+<!-- / [14]DepartedDice <- CrystalRole --></div>
+
+
+<!-- [15]CosmicCraftsStore <- DaarkaArts --><div class="cs-item" align="left">
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/5009b955a06f00c067a8a84f3ac6fdb4.png"><img src="https://i.gyazo.com/c012b840b9a74532d06fea3d6c7de98d.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/CosmicCraftsStore">@CosmicCraftsStore</a></span>
+										<button class="DescriptionButton" data-modal="Modal2021CosmicCraftsStore">Details</button>
+                </div>
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/77d32767c49654926599b49e32a9d50b.png"><img src="https://i.gyazo.com/6b94eca87487399921ddd9229186f015.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/DaarkaArts">@DaarkaArts</a></span>
+                </div>
+            <p class="cs-item-text"></p>
+</div><!--MODAL--><div id="Modal2021CosmicCraftsStore" class="modal">
+         <div class="modal-content">
+          <span class="close"><span class="closeButton">&times;</span></span>
+        <div class="cs-itemModal" align="left">
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/5009b955a06f00c067a8a84f3ac6fdb4.png"><img src="https://i.gyazo.com/c012b840b9a74532d06fea3d6c7de98d.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/CosmicCraftsStore">@CosmicCraftsStore</a></span>
+                </div>
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/77d32767c49654926599b49e32a9d50b.png"><img src="https://i.gyazo.com/6b94eca87487399921ddd9229186f015.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/DaarkaArts">@DaarkaArts</a></span>
+                </div>
+            <p class="cs-item-text"></p>
+        </div>
+            <div class="cs-item2" align="left"><span class="cs-tagButton"><b>Moodboard Description</b></span></br>
+            <p></p></div>
+		</div>
+<!-- / [15]CosmicCraftsStore <- DaarkaArts --></div>
+
+
+<!-- [16]OlympusForgeDice <- Qweerosaurus --><div class="cs-item" align="left">
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/e32f214c3dc7d3855b340c8024de5d10.png"><img src="https://i.gyazo.com/cd882c24428da6e932190535e49a6ef5.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/OlympusForgeDice">@OlympusForgeDice</a></span>
+										<button class="DescriptionButton" data-modal="Modal2021OlympusForgeDice">Details</button>
+                </div>
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/e78fa71dbdd9807405591e4c6a5cf155.png"><img src="https://i.gyazo.com/00ffdd7853f47dfacfcc6313432c97b2.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/Qweerosaurus">@Qweerosaurus</a></span>
+                </div>
+            <p class="cs-item-text"></p>
+</div><!--MODAL--><div id="Modal2021OlympusForgeDice" class="modal">
+         <div class="modal-content">
+          <span class="close"><span class="closeButton">&times;</span></span>
+        <div class="cs-itemModal" align="left">
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/e32f214c3dc7d3855b340c8024de5d10.png"><img src="https://i.gyazo.com/cd882c24428da6e932190535e49a6ef5.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/OlympusForgeDice">@OlympusForgeDice</a></span>
+                </div>
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/e78fa71dbdd9807405591e4c6a5cf155.png"><img src="https://i.gyazo.com/00ffdd7853f47dfacfcc6313432c97b2.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/Qweerosaurus">@Qweerosaurus</a></span>
+                </div>
+            <p class="cs-item-text"></p>
+        </div>
+            <div class="cs-item2" align="left"><span class="cs-tagButton"><b>Moodboard Description</b></span></br>
+            <p></p></div>
+		</div>
+<!-- / [16]OlympusForgeDice <- Qweerosaurus --></div>
+
+
+<!-- [17]Imaginarium_Dice <- LycanTracksDice --><div class="cs-item" align="left">
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/85a4a1aa7bc62396de908f37efe88eb1.png"><img src="https://i.gyazo.com/43b295102cc7caf9298f5f22df90cfe8.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/Imaginarium_Dice">@Imaginarium_Dice</a></span>
+										<button class="DescriptionButton" data-modal="Modal2021Imaginarium_Dice">Details</button>
+                </div>
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/thumb/1000/8519e1f3135d540f1c41040d506e0cd7-png.jpg"><img src="https://i.gyazo.com/16a0e095c797fec1076c337d5e9ba39f.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/LycanTracksDice">@LycanTracksDice</a></span>
+                </div>
+            <p class="cs-item-text"></p>
+</div><!--MODAL--><div id="Modal2021Imaginarium_Dice" class="modal">
+         <div class="modal-content">
+          <span class="close"><span class="closeButton">&times;</span></span>
+        <div class="cs-itemModal" align="left">
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/85a4a1aa7bc62396de908f37efe88eb1.png"><img src="https://i.gyazo.com/43b295102cc7caf9298f5f22df90cfe8.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/Imaginarium_Dice">@Imaginarium_Dice</a></span>
+                </div>
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/thumb/1000/8519e1f3135d540f1c41040d506e0cd7-png.jpg"><img src="https://i.gyazo.com/16a0e095c797fec1076c337d5e9ba39f.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/LycanTracksDice">@LycanTracksDice</a></span>
+                </div>
+            <p class="cs-item-text"></p>
+        </div>
+            <div class="cs-item2" align="left"><span class="cs-tagButton"><b>Moodboard Description</b></span></br>
+            <p></p></div>
+		</div>
+<!-- / [17]Imaginarium_Dice <- LycanTracksDice --></div>
+
+
+<!-- [18]Paradice.Made <- CrowLanternDice --><div class="cs-item" align="left">
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/c524f9b629414fbe5d4f3029d14f71d3.png"><img src="https://i.gyazo.com/19946a85c6003d288953ca461ba83f11.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/Paradice.Made">@Paradice.Made</a></span>
+										<button class="DescriptionButton" data-modal="Modal2021Paradice.Made">Details</button>
+                </div>
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/60bce59705675de5c447d3aa6091f882.png"><img src="https://i.gyazo.com/28b9a3c31b4be3b3554aa9d96f20cbf0.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/CrowLanternDice">@CrowLanternDice</a></span>
+                </div>
+            <p class="cs-item-text"></p>
+</div><!--MODAL--><div id="Modal2021Paradice.Made" class="modal">
+         <div class="modal-content">
+          <span class="close"><span class="closeButton">&times;</span></span>
+        <div class="cs-itemModal" align="left">
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/c524f9b629414fbe5d4f3029d14f71d3.png"><img src="https://i.gyazo.com/19946a85c6003d288953ca461ba83f11.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/Paradice.Made">@Paradice.Made</a></span>
+                </div>
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/60bce59705675de5c447d3aa6091f882.png"><img src="https://i.gyazo.com/28b9a3c31b4be3b3554aa9d96f20cbf0.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/CrowLanternDice">@CrowLanternDice</a></span>
+                </div>
+            <p class="cs-item-text"></p>
+        </div>
+            <div class="cs-item2" align="left"><span class="cs-tagButton"><b>Moodboard Description</b></span></br>
+            <p></p></div>
+		</div>
+<!-- / [18]Paradice.Made <- CrowLanternDice --></div>
+
+
+<!-- [19]Normal_Human_Dice <- ClericalErrorDice --><div class="cs-item" align="left">
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/44a58b96a708b03a15a8b0e7a68486bf.png"><img src="https://i.gyazo.com/411fda0643d3c9d2b48cec5b36706e34.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/Normal_Human_Dice">@Normal_Human_Dice</a></span>
+										<button class="DescriptionButton" data-modal="Modal2021Normal_Human_Dice">Details</button>
+                </div>
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/e9e41ce02855c4ed1ab0065dff0b9668.png"><img src="https://i.gyazo.com/5485553b794d42247bf43b3d8ac66d4f.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/ClericalErrorDice">@ClericalErrorDice</a></span>
+                </div>
+            <p class="cs-item-text"></p>
+</div><!--MODAL--><div id="Modal2021Normal_Human_Dice" class="modal">
+         <div class="modal-content">
+          <span class="close"><span class="closeButton">&times;</span></span>
+        <div class="cs-itemModal" align="left">
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/44a58b96a708b03a15a8b0e7a68486bf.png"><img src="https://i.gyazo.com/411fda0643d3c9d2b48cec5b36706e34.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/Normal_Human_Dice">@Normal_Human_Dice</a></span>
+                </div>
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/e9e41ce02855c4ed1ab0065dff0b9668.png"><img src="https://i.gyazo.com/5485553b794d42247bf43b3d8ac66d4f.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/ClericalErrorDice">@ClericalErrorDice</a></span>
+                </div>
+            <p class="cs-item-text"></p>
+        </div>
+            <div class="cs-item2" align="left"><span class="cs-tagButton"><b>Moodboard Description</b></span></br>
+            <p></p></div>
+		</div>
+<!-- / [19]Normal_Human_Dice <- ClericalErrorDice --></div>
+
+
+<!-- [20]Fernscale <- DepartedDice --><div class="cs-item" align="left">
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/04e25add4c8608b424d7b1cbdbae8027.png"><img src="https://i.gyazo.com/ce55031b5c1a0fd485345ef883cca917.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/Fernscale">@Fernscale</a></span>
+										<button class="DescriptionButton" data-modal="Modal2021Fernscale">Details</button>
+                </div>
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/4470cb621d5fb709649d282cb49a8e41.png"><img src="https://i.gyazo.com/e1e64e8e332465cc6d7023661e3cfb67.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/DepartedDice">@DepartedDice</a></span>
+                </div>
+            <p class="cs-item-text"></p>
+</div><!--MODAL--><div id="Modal2021Fernscale" class="modal">
+         <div class="modal-content">
+          <span class="close"><span class="closeButton">&times;</span></span>
+        <div class="cs-itemModal" align="left">
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/04e25add4c8608b424d7b1cbdbae8027.png"><img src="https://i.gyazo.com/ce55031b5c1a0fd485345ef883cca917.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/Fernscale">@Fernscale</a></span>
+                </div>
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/4470cb621d5fb709649d282cb49a8e41.png"><img src="https://i.gyazo.com/e1e64e8e332465cc6d7023661e3cfb67.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/DepartedDice">@DepartedDice</a></span>
+                </div>
+            <p class="cs-item-text"></p>
+        </div>
+            <div class="cs-item2" align="left"><span class="cs-tagButton"><b>Moodboard Description</b></span></br>
+            <p></p></div>
+		</div>
+<!-- / [20]Fernscale <- DepartedDice --></div>
+
+
+<!-- [21]BusyWizardDice <- Normal_Human_Dice --><div class="cs-item" align="left">
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/45296f796aedafb5bbc17f8c86f410b3.png"><img src="https://i.gyazo.com/a42db08defc5c5ec9dee7718081e5f0c.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/BusyWizardDice">@BusyWizardDice</a></span>
+										<button class="DescriptionButton" data-modal="Modal2021BusyWizardDice">Details</button>
+                </div>
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/12657d1b114b863034698443f59ea1d1.png"><img src="https://i.gyazo.com/f9d90e43922f02fd487e559257a40888.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/Normal_Human_Dice">@Normal_Human_Dice</a></span>
+                </div>
+            <p class="cs-item-text"></p>
+</div><!--MODAL--><div id="Modal2021BusyWizardDice" class="modal">
+         <div class="modal-content">
+          <span class="close"><span class="closeButton">&times;</span></span>
+        <div class="cs-itemModal" align="left">
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/45296f796aedafb5bbc17f8c86f410b3.png"><img src="https://i.gyazo.com/a42db08defc5c5ec9dee7718081e5f0c.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/BusyWizardDice">@BusyWizardDice</a></span>
+                </div>
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/12657d1b114b863034698443f59ea1d1.png"><img src="https://i.gyazo.com/f9d90e43922f02fd487e559257a40888.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/Normal_Human_Dice">@Normal_Human_Dice</a></span>
+                </div>
+            <p class="cs-item-text"></p>
+        </div>
+            <div class="cs-item2" align="left"><span class="cs-tagButton"><b>Moodboard Description</b></span></br>
+            <p></p></div>
+		</div>
+<!-- / [21]BusyWizardDice <- Normal_Human_Dice --></div>
+
+
+<!-- [22]TempestDice <- KittyClacksDice --><div class="cs-item" align="left">
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/50e9e71baffab17bfc3b90ee79ccb02f.png"><img src="https://i.gyazo.com/30dda8f244c349acb213080f573012ed.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/TempestDice">@TempestDice</a></span>
+										<button class="DescriptionButton" data-modal="Modal2021TempestDice">Details</button>
+                </div>
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/thumb/1000/f4aa9c070fb5728a0240de8e5cebf454-png.jpg"><img src="https://i.gyazo.com/58edd20ee5aae92a7090bc81053bad4a.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/KittyClacksDice">@KittyClacksDice</a></span>
+                </div>
+            <p class="cs-item-text"></p>
+</div><!--MODAL--><div id="Modal2021TempestDice" class="modal">
+         <div class="modal-content">
+          <span class="close"><span class="closeButton">&times;</span></span>
+        <div class="cs-itemModal" align="left">
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/50e9e71baffab17bfc3b90ee79ccb02f.png"><img src="https://i.gyazo.com/30dda8f244c349acb213080f573012ed.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/TempestDice">@TempestDice</a></span>
+                </div>
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/thumb/1000/f4aa9c070fb5728a0240de8e5cebf454-png.jpg"><img src="https://i.gyazo.com/58edd20ee5aae92a7090bc81053bad4a.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/KittyClacksDice">@KittyClacksDice</a></span>
+                </div>
+            <p class="cs-item-text"></p>
+        </div>
+            <div class="cs-item2" align="left"><span class="cs-tagButton"><b>Moodboard Description</b></span></br>
+            <p></p></div>
+		</div>
+<!-- / [22]TempestDice <- KittyClacksDice --></div>
+
+
+<!-- [23]ArcaneFeyCreations <- Paradice.Made --><div class="cs-item" align="left">
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/1b51f76b554b6f67a715f7c9e5a4975d.png"><img src="https://i.gyazo.com/892033bb68d79ee4db08a7752e632296.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/ArcaneFeyCreations">@ArcaneFeyCreations</a></span>
+										<button class="DescriptionButton" data-modal="Modal2021ArcaneFeyCreations">Details</button>
+                </div>
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/ca0498b64a03bf6ef328672957f4674a.png"><img src="https://i.gyazo.com/50566244cece93c955eecd4356d7b581.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/Paradice.Made">@Paradice.Made</a></span>
+                </div>
+            <p class="cs-item-text"></p>
+</div><!--MODAL--><div id="Modal2021ArcaneFeyCreations" class="modal">
+         <div class="modal-content">
+          <span class="close"><span class="closeButton">&times;</span></span>
+        <div class="cs-itemModal" align="left">
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/1b51f76b554b6f67a715f7c9e5a4975d.png"><img src="https://i.gyazo.com/892033bb68d79ee4db08a7752e632296.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/ArcaneFeyCreations">@ArcaneFeyCreations</a></span>
+                </div>
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/ca0498b64a03bf6ef328672957f4674a.png"><img src="https://i.gyazo.com/50566244cece93c955eecd4356d7b581.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/Paradice.Made">@Paradice.Made</a></span>
+                </div>
+            <p class="cs-item-text"></p>
+        </div>
+            <div class="cs-item2" align="left"><span class="cs-tagButton"><b>Moodboard Description</b></span></br>
+            <p></p></div>
+		</div>
+<!-- / [23]ArcaneFeyCreations <- Paradice.Made --></div>
+
+
+<!-- [24]CrowLanternDice <- TempestDice --><div class="cs-item" align="left">
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/dbcf3c24a2450307109e8394703195c4.png"><img src="https://i.gyazo.com/d057723de986ec720bb76b6bacba569b.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/CrowLanternDice">@CrowLanternDice</a></span>
+										<button class="DescriptionButton" data-modal="Modal2021CrowLanternDice">Details</button>
+                </div>
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/5e4237f59a8583ab3e8faed6baab0c97.png"><img src="https://i.gyazo.com/9dad4891bf36403d4739ed6b3ee16d62.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/TempestDice">@TempestDice</a></span>
+                </div>
+            <p class="cs-item-text"></p>
+</div><!--MODAL--><div id="Modal2021CrowLanternDice" class="modal">
+         <div class="modal-content">
+          <span class="close"><span class="closeButton">&times;</span></span>
+        <div class="cs-itemModal" align="left">
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/dbcf3c24a2450307109e8394703195c4.png"><img src="https://i.gyazo.com/d057723de986ec720bb76b6bacba569b.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/CrowLanternDice">@CrowLanternDice</a></span>
+                </div>
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/5e4237f59a8583ab3e8faed6baab0c97.png"><img src="https://i.gyazo.com/9dad4891bf36403d4739ed6b3ee16d62.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/TempestDice">@TempestDice</a></span>
+                </div>
+            <p class="cs-item-text"></p>
+        </div>
+            <div class="cs-item2" align="left"><span class="cs-tagButton"><b>Moodboard Description</b></span></br>
+            <p></p></div>
+		</div>
+<!-- / [24]CrowLanternDice <- TempestDice --></div>
+
+
+<!-- [25]ClericalErrorDice <- Ravensblood_Studio --><div class="cs-item" align="left">
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/da2a5706dc80f548ee7aa89d84fd4844.png"><img src="https://i.gyazo.com/5f9865e176335ac59677eb287214a39d.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/ClericalErrorDice">@ClericalErrorDice</a></span>
+										<button class="DescriptionButton" data-modal="Modal2021ClericalErrorDice">Details</button>
+                </div>
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/0d6920bca0da700b18efbcdb47dc489e.png"><img src="https://i.gyazo.com/505bc7a14b257854446ce4ac0feeb523.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/Ravensblood_Studio">@Ravensblood_Studio</a></span>
+                </div>
+            <p class="cs-item-text"></p>
+</div><!--MODAL--><div id="Modal2021ClericalErrorDice" class="modal">
+         <div class="modal-content">
+          <span class="close"><span class="closeButton">&times;</span></span>
+        <div class="cs-itemModal" align="left">
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/da2a5706dc80f548ee7aa89d84fd4844.png"><img src="https://i.gyazo.com/5f9865e176335ac59677eb287214a39d.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/ClericalErrorDice">@ClericalErrorDice</a></span>
+                </div>
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/0d6920bca0da700b18efbcdb47dc489e.png"><img src="https://i.gyazo.com/505bc7a14b257854446ce4ac0feeb523.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/Ravensblood_Studio">@Ravensblood_Studio</a></span>
+                </div>
+            <p class="cs-item-text"></p>
+        </div>
+            <div class="cs-item2" align="left"><span class="cs-tagButton"><b>Moodboard Description</b></span></br>
+            <p></p></div>
+		</div>
+<!-- / [25]ClericalErrorDice <- Ravensblood_Studio --></div>
+
+
+<!-- [26]NonagonDice <- Mirkwood_Dice --><div class="cs-item" align="left">
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/579afcc74fde7d293bbef1e00d97f621.png"><img src="https://i.gyazo.com/a60a913226b97f3a7bb134a06e6669ae.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/NonagonDice">@NonagonDice</a></span>
+										<button class="DescriptionButton" data-modal="Modal2021NonagonDice">Details</button>
+                </div>
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/00db5cb4dde48a2c9bc43fd40a3c9acc.jpg"><img src="https://i.gyazo.com/c96b338d3b89d3757b42b96dc89e3b8a.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/Mirkwood_Dice">@Mirkwood_Dice</a></span>
+                </div>
+            <p class="cs-item-text"></p>
+</div><!--MODAL--><div id="Modal2021NonagonDice" class="modal">
+         <div class="modal-content">
+          <span class="close"><span class="closeButton">&times;</span></span>
+        <div class="cs-itemModal" align="left">
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/579afcc74fde7d293bbef1e00d97f621.png"><img src="https://i.gyazo.com/a60a913226b97f3a7bb134a06e6669ae.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/NonagonDice">@NonagonDice</a></span>
+                </div>
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/00db5cb4dde48a2c9bc43fd40a3c9acc.jpg"><img src="https://i.gyazo.com/c96b338d3b89d3757b42b96dc89e3b8a.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/Mirkwood_Dice">@Mirkwood_Dice</a></span>
+                </div>
+            <p class="cs-item-text"></p>
+        </div>
+            <div class="cs-item2" align="left"><span class="cs-tagButton"><b>Moodboard Description</b></span></br>
+            <p></p></div>
+		</div>
+<!-- / [26]NonagonDice <- Mirkwood_Dice --></div>
+
+
+<!-- [27]Geckohedron <- Imaginarium_Dice --><div class="cs-item" align="left">
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/10d320a2912f58ff29029c75f847c0ae.png"><img src="https://i.gyazo.com/b2190444210eda930104ac5fb3f1aa1d.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/Geckohedron">@Geckohedron</a></span>
+										<button class="DescriptionButton" data-modal="Modal2021Geckohedron">Details</button>
+                </div>
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/2545df3eae082915b037de1974470041.png"><img src="https://i.gyazo.com/9425c202043aae39d92ad005b1bca324.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/Imaginarium_Dice">@Imaginarium_Dice</a></span>
+                </div>
+            <p class="cs-item-text"></p>
+</div><!--MODAL--><div id="Modal2021Geckohedron" class="modal">
+         <div class="modal-content">
+          <span class="close"><span class="closeButton">&times;</span></span>
+        <div class="cs-itemModal" align="left">
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/10d320a2912f58ff29029c75f847c0ae.png"><img src="https://i.gyazo.com/b2190444210eda930104ac5fb3f1aa1d.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/Geckohedron">@Geckohedron</a></span>
+                </div>
+                <div class="cs-picture-group">
+                    <picture class="cs-picture">
+                        <a href="https://i.gyazo.com/2545df3eae082915b037de1974470041.png"><img src="https://i.gyazo.com/9425c202043aae39d92ad005b1bca324.png"></a>
+                    </picture>
+                    <span class="cs-tag"><a href="https://instagram.com/Imaginarium_Dice">@Imaginarium_Dice</a></span>
+                </div>
+            <p class="cs-item-text"></p>
+        </div>
+            <div class="cs-item2" align="left"><span class="cs-tagButton"><b>Moodboard Description</b></span></br>
+            <p></p></div>
+		</div>
+<!-- / [27]Geckohedron <- Imaginarium_Dice --></div>
+</div>
+
+</div>
+
+</div>
+</div>
+</section>
+</div>
+
+<script>
+function openCity(evt, cityName) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+  document.getElementById(cityName).style.display = "block";
+  evt.currentTarget.className += " active";
+}
+
+// Get the element with id="defaultOpen" and click on it
+document.getElementById("defaultOpen").click();
+
+
+// Accordion
+var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var panel = this.nextElementSibling;
+    if (panel.style.display === "block") {
+      panel.style.display = "none";
+    } else {
+      panel.style.display = "block";
+    }
+  });
+}
+
+// Event delegation for all modal buttons
+document.addEventListener('click', function(event) {
+  // Open modal when clicking buttons
+  if (event.target.classList.contains('DescriptionButton')) {
+    const modalId = event.target.getAttribute('data-modal');
+    const modal = document.getElementById(modalId);
+    modal.style.display = 'block';
+  }
+  
+  // Close modal when clicking close buttons
+  if (event.target.classList.contains('closeButton')) {
+    const modal = event.target.closest('.modal');
+    modal.style.display = 'none';
+  }
+  
+  // Close modal when clicking outside
+  if (event.target.classList.contains('modal')) {
+    event.target.style.display = 'none';
+  }
+});
+
+</script>
+
+</body>
+</html>
