@@ -28,9 +28,6 @@
     --textsizeReg: 1rem;
     --sectionPadding: 0px;
 }
-hr {
-  border-color: #ffc9c0;
-}
 
 body {
     margin: 0;
@@ -136,7 +133,7 @@ body {
     /* display: grid;*/
     grid-auto-flow: row;
     /* FULL PAGE GUTTERS */
-    gap: 0px;
+    gap: 0;
     z-index: 1;
     max-width: 100%;
     padding-right: 100;
@@ -144,104 +141,24 @@ body {
 
 /* GUY I LIKE */
     #gallery .cs-item {
-        background-color: var(--backgroundColor);
-        box-shadow: 0 0 8px 2px var(--shadowColor); 
+        background-color: none;
         justify-content: center;
-        /*display: grid;*/
         display:inline-grid;
-        /* max-width: clamp(655px, 655px, 655px); */
-        aspect-ratio: 1 / 0.52;
+        aspect-ratio: 1;
         width: 100%;
-        max-width: 560px;
-        /* PADDING (CONTAINER) */
-        padding: 1vw;
-        padding-left: 1vw;
-        padding-bottom: 0vw;
-        margin-top: 0.75vw; 
-        margin-right: 0.25vw;
-        /* CORNER ROUNDING (CONTAINER) */
-        border-radius: 16px;
-        /* IMG2IMG GUTTERS */
-        column-gap: 8px;
-        /* IMG BOTTOM MARGIN */
-        row-gap: 1vw;      
+        max-width: 300px;
+        margin: -3;
+        margin-top: -5;
     }
 
-/* MODAL VERSIONS */
-#gallery .cs-itemModal {
-        background-color: var(--backgroundColor);
-        box-shadow: 0 0 8px 2px var(--shadowColor); 
-        justify-content: center;
-        /*display: grid;*/
-        display:inline-grid;
-        /* max-width: clamp(655px, 655px, 655px); */
-        aspect-ratio: 1 / 0.52;
-        width: 100%;
-        max-width: 100%;
-        /* PADDING (CONTAINER) */
-        padding: 1vw;
-        padding-left: 1vw;
-        padding-bottom: 0vw;
-        margin-top: 0.75vw; 
-        margin-right: 0.25vw;
-        /* CORNER ROUNDING (CONTAINER) */
-        border-radius: 16px;
-        /* IMG2IMG GUTTERS */
-        column-gap: 8px;
-        /* IMG BOTTOM MARGIN */
-        row-gap: 1vw;      
-    }
-
-#gallery .cs-item2 {
-        background-color: var(--backgroundColorSolid);
-        box-shadow: 0 0 8px 2px var(--shadowColor); 
-        justify-content: center;
-        /*display: grid;*/
-        /* max-width: clamp(655px, 655px, 655px); */
-        width: 100%;
-        max-width: 100%;
-        /* PADDING (CONTAINER) */
-        padding-left: 2.5vw;
-        padding-right: 2.5vw;
-        padding-bottom: 1.9vw;
-        padding-top: 1.9vw;
-        margin-top: 0.75vw; 
-        margin-right: 0.25vw;
-        /* CORNER ROUNDING (CONTAINER) */
-        border-radius: 16px;
-        /* IMG2IMG GUTTERS */
-        column-gap: 8px;
-        /* IMG BOTTOM MARGIN */
-        row-gap: 1vw;      
-        line-height: 1rem;
-        font-family: Arial;
-    }
-
-/* PAIR TITLE */
-  #gallery .cs-item-text {
-    font-size: 16px;
-    font-weight: 700;
-    font-family: 'Playpen Sans';
-    line-height: 1.2em;
-    margin: 0;
-    color: var(--textLight);
-    grid-column: span 2;
-  }
   #gallery .cs-picture-group {
-    /* height: clamp(267px, 267px, 267px);
-    width: clamp(267px, 267px, 267px); */
     overflow: hidden;
-    border-radius: 1rem;
-    grid-column: span 1;
     position: relative;
-    box-shadow: 0 0 0px 2px var(--outlineColor);
-    aspect-ratio: 2 / 1.25;
-    height: 123%;
+    aspect-ratio: 1;
+    height: 100%;
     width: 100%;
   }
   #gallery .cs-picture {
-    width: 100%;
-    height: 100%;
     display: block;
   }
   #gallery .cs-picture img {
@@ -252,33 +169,6 @@ body {
     top: 0;
     left: 0;
   }
-/* BEFORE/AFTER FLOATING ICONS */
-  #gallery .cs-tag {
-    font-size: 0.875rem;
-    line-height: 1.3em;
-    font-family: 'Arial';
-    padding: 0.15rem 0.35rem;
-    background: var(--backgroundButton);
-    color: var(--textLightest);
-    border: 1px solid var(--outlineButton);
-    border-radius: 1.875rem;
-    /* 
-    position: absolute;
-    bottom: 14.8rem; 
-    left: 0.3rem;
-    */
-    backdrop-filter: blur(8px);
-    position: absolute;
-    top: 0.4rem;
-    left: 0.95rem;
-    margin-left: -10px;
-    transform: none;
-  }
-  a {
-    color: var(--textButton);
-    text-decoration:none;
-    }
-
 }
 /* Tablet - 600px */
 @media only screen and (min-width: 37.5rem) {
@@ -348,112 +238,6 @@ body {font-family: "Playpen Sans";}
   max-width: 100%;
   width: 100%;
 }
-
-/* The Modal (background) */
-.modal {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  padding-top: 100px; /* Location of the box */
-  left: 0;
-  top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: var(--backgroundButton); /* Fallback color */
-  background-color: var(--backgroundButton); /* Black w/ opacity */
-}
-
-/* Modal Content */
-.modal-content {
-  background-color: var(--backgroundopaque);
-  margin: auto;
-  margin-bottom: 100px;
-  margin-top: -50px;
-  padding: 15px;
-  border: 1px solid var(--outlineButton);
-  width: 95%;
-  max-width: 750px;
-  height: auto;
-  border-radius: 1.875rem;
-  /* padding-left: 25px; */
-  font-size: 0.95rem;
-  color: var(--textDark);
-}
-
-/* The Close Button */
-.close {
-  float: right;
-  position: absolute;
-  margin-top: -34;
-  margin-left: 40;
-  width: 80%;
-  max-width: 45rem;
-  font-size: 2rem;
-  font-weight: bold;
-  background: var(--backgroundClear);
-  color: var(--Raspberry);
-  text-align: right;
-  z-index: 1;
-}
-
-.closeButton {
-  font-size: 2rem;
-  font-weight: bold;
-  background: var(--Raspberry);
-  color: var(--backgroundopaque);
-  border: 1px solid var(--outlineButton);
-  border-radius: 1.875rem;
-  padding-left: 13;
-  padding-right: 13;
-}
-
-.close:hover,
-.close:focus {
-  color: var(--outlineColor);
-  text-decoration: none;
-  cursor: pointer;
-}
-
-  #gallery .cs-tagButton {
-    font-size: 1rem;
-    line-height: 1.3em;
-    font-family: 'Playpen Sans';
-    padding: 0.15rem 0.35rem;
-    background: var(--backgroundopaque);
-    color: var(--textBrown);
-    border: 1px solid var(--backgroundopaque);
-    border-radius: 1.875rem; 
-    /*
-    bottom: 14.8rem; 
-    */
-    backdrop-filter: blur(8px);
-    position: absolute;
-    /*
-    top: 0.4rem;
-    left: 0.95rem;
-    margin-left: -10px;
-    */
-    transform: none;
-  }
-
-  .DescriptionButton{
-    font-size: 0.875rem;
-    line-height: 1.3em;
-    font-family: 'Playpen Sans';
-    padding: 0.15rem 0.35rem;
-    background: #782b421c;
-    color: var(--textLightest);
-    border: 1px solid var(--outlineBrighter);
-    border-radius: 1.875rem;
-    backdrop-filter: blur(8px);
-    position: absolute;
-    bottom: 0.4rem;
-    left: 0.95rem;
-    margin-left: -10px;
-    transform: none;
-  }
-
 </style>
 </head>
 <body>
@@ -462,7 +246,7 @@ body {font-family: "Playpen Sans";}
 <div class="content">
 <div class="cs-content">
 
- <div class="tab">
+<div class="tab">
   <button class="active" onclick="openCity(event, '2025')"id="defaultOpen"><a href="2025.html"><img src="https://i.gyazo.com/ea80b06c6db8770fc0df9b799feb540b.png"></a></button>
   <button class="tablinks"><a href="2024.html"><img src="https://i.gyazo.com/b44334e2bdc97c2d948cea650966daa8.png"></a></button>
   <button class="tablinks"><a href="2023.html"><img src="https://i.gyazo.com/d3ac56e2855b096e6dfbd01aa9971f54.png"></a></button>
@@ -472,14 +256,285 @@ body {font-family: "Playpen Sans";}
 </div>
 
 <div id="2025" class="tabcontent">
-      <div align="center" style="padding-right: 110px; padding-left: 10px; color: var(--textDark);">
-        <br>
-        <b>This swap is just starting!</b>
-        <br>Check back in a few days to see this year's moodboards!
+    <div align="center" style="padding-right: 110px; padding-left: 10px; color: var(--textDark);">
+        <b>This swap is still ongoing!</b>
+        <br>For now, you can browse all the moodboards from our participants below; when finished gifts are shipped and delivered to their recipients, this page will start tracking the finished dice, too!
     </div>
     <br>
 <div class="cs-gallery" align="center">
-
+    <div class="cs-item">
+        <div class="cs-picture-group">
+            <picture class="cs-picture">
+                <a href="https://i.gyazo.com/7d25ccbf0015f279ab8c86783caafbd3.png" target="SwapGallery"><img src="https://i.gyazo.com/357f1ed502bbb5e152155286693fbad4.png"></a>
+            </picture>
+        </div>
+    </div>
+    <div class="cs-item">
+        <div class="cs-picture-group">
+            <picture class="cs-picture">
+                <a href="https://i.gyazo.com/377740c27fb06773886924e30429ae4b.jpg" target="SwapGallery"><img src="https://i.gyazo.com/862c3ff88b70d5bbef9a75aef03cec77.jpg"></a>
+            </picture>
+        </div>
+    </div>
+    <div class="cs-item">
+        <div class="cs-picture-group">
+            <picture class="cs-picture">
+                <a href="https://i.gyazo.com/6ac6be36a7457022258eee4f0f8bcc1e.jpg" target="SwapGallery"><img src="https://i.gyazo.com/55efacd0fb9bd0544e2bc1d8a5e7d549.jpg"></a>
+            </picture>
+        </div>
+    </div>
+    <div class="cs-item">
+        <div class="cs-picture-group">
+            <picture class="cs-picture">
+                <a href="https://i.gyazo.com/97f276092e0e4d5b715649f321f229cc.png" target="SwapGallery"><img src="https://i.gyazo.com/547a214f689c982b0456d9baf7887860.png"></a>
+            </picture>
+        </div>
+    </div>
+    <div class="cs-item">
+        <div class="cs-picture-group">
+            <picture class="cs-picture">
+                <a href="https://i.gyazo.com/34ed0c8ac50c89f9f94354290f7ef1a5.png" target="SwapGallery"><img src="https://i.gyazo.com/a354cd3cdcfc3075595436d8a848640a.png"></a>
+            </picture>
+        </div>
+    </div>
+    <div class="cs-item">
+        <div class="cs-picture-group">
+            <picture class="cs-picture">
+                <a href="https://i.gyazo.com/195efd9374d6968c71800c79d3db0820.png" target="SwapGallery"><img src="https://i.gyazo.com/10a5a9890f2a89f429147228ed7965be.png"></a>
+            </picture>
+        </div>
+    </div>
+    <div class="cs-item">
+        <div class="cs-picture-group">
+            <picture class="cs-picture">
+                <a href="https://i.gyazo.com/db5cd2b0ed6bd7981581ef513edb10dd.png" target="SwapGallery"><img src="https://i.gyazo.com/5afd9a1e5e227bb4b8b1e27b4c515ddd.png"></a>
+            </picture>
+        </div>
+    </div>
+    <div class="cs-item">
+        <div class="cs-picture-group">
+            <picture class="cs-picture">
+                <a href="https://i.gyazo.com/93daeab8b2268ab65420c69e28f945d3.png" target="SwapGallery"><img src="https://i.gyazo.com/d24d25b83f1a363a13687a35ed9257b5.png"></a>
+            </picture>
+        </div>
+    </div>
+    <div class="cs-item">
+        <div class="cs-picture-group">
+            <picture class="cs-picture">
+                <a href="https://i.gyazo.com/85c5a43394c8c8da820ddcc7f10be39e.png" target="SwapGallery"><img src="https://i.gyazo.com/e1a9b649ec8ebb0d463daef60a9c302e.png"></a>
+            </picture>
+        </div>
+    </div>
+    <div class="cs-item">
+        <div class="cs-picture-group">
+            <picture class="cs-picture">
+                <a href="https://i.gyazo.com/3c167061e7a18aab673a4aca839c99cd.jpg" target="SwapGallery"><img src="https://i.gyazo.com/ad09eb974f6c5f755d32e1d79728050b.jpg"></a>
+            </picture>
+        </div>
+    </div>
+    <div class="cs-item">
+        <div class="cs-picture-group">
+            <picture class="cs-picture">
+                <a href="https://i.gyazo.com/8c59263a2472c7fbe4a4e492bdc296ac.png" target="SwapGallery"><img src="https://i.gyazo.com/32da51191ed86f6dc21bbcb4a8ffdd33.png"></a>
+            </picture>
+        </div>
+    </div>
+    <div class="cs-item">
+        <div class="cs-picture-group">
+            <picture class="cs-picture">
+                <a href="https://i.gyazo.com/2ccb641192189ba9018552d2c13e01e2.png" target="SwapGallery"><img src="https://i.gyazo.com/3ba945ca6a6a89ba309ba5c87d9ffabf.png"></a>
+            </picture>
+        </div>
+    </div>
+    <div class="cs-item">
+        <div class="cs-picture-group">
+            <picture class="cs-picture">
+                <a href="https://i.gyazo.com/23cb141c140ddb000290e9d02c71ed2a.png" target="SwapGallery"><img src="https://i.gyazo.com/538c43240d14a45a50ed975052007225.png"></a>
+            </picture>
+        </div>
+    </div>
+    <div class="cs-item">
+        <div class="cs-picture-group">
+            <picture class="cs-picture">
+                <a href="https://i.gyazo.com/fe53838d3d84db898216d7f41f15a2df.png" target="SwapGallery"><img src="https://i.gyazo.com/f3748015d23c52adf29c35950ec18311.png"></a>
+            </picture>
+        </div>
+    </div>
+    <div class="cs-item">
+        <div class="cs-picture-group">
+            <picture class="cs-picture">
+                <a href="https://i.gyazo.com/16894e969fa1dc7dd01a96e3e7cb7910.jpg" target="SwapGallery"><img src="https://i.gyazo.com/9f3ca8a12ec777518029596c699bd9a1.jpg"></a>
+            </picture>
+        </div>
+    </div>
+    <div class="cs-item">
+        <div class="cs-picture-group">
+            <picture class="cs-picture">
+                <a href="https://i.gyazo.com/eb5e42fe64a53937c79fe064df590402.png" target="SwapGallery"><img src="https://i.gyazo.com/62587d81d19e2a084c78ca20486f43c9.png"></a>
+            </picture>
+        </div>
+    </div>
+    <div class="cs-item">
+        <div class="cs-picture-group">
+            <picture class="cs-picture">
+                <a href="https://i.gyazo.com/dae99203e5e3e0fe59d9b71e50f8aef8.png" target="SwapGallery"><img src="https://i.gyazo.com/4be5805703e30747b9bd03a78c0e681d.png"></a>
+            </picture>
+        </div>
+    </div>
+    <div class="cs-item">
+        <div class="cs-picture-group">
+            <picture class="cs-picture">
+                <a href="https://i.gyazo.com/bfe7ba2a10e4d0abe7c54b4b7aaefca2.jpg" target="SwapGallery"><img src="https://i.gyazo.com/bbc6f45ab5840eb09dfb47e4471aafdf.jpg"></a>
+            </picture>
+        </div>
+    </div>
+    <div class="cs-item">
+        <div class="cs-picture-group">
+            <picture class="cs-picture">
+                <a href="https://i.gyazo.com/2d846b09705d71e9c25ac5df98753639.png" target="SwapGallery"><img src="https://i.gyazo.com/b0f4e276dd0eb028410be453002513de.png"></a>
+            </picture>
+        </div>
+    </div>
+    <div class="cs-item">
+        <div class="cs-picture-group">
+            <picture class="cs-picture">
+                <a href="https://i.gyazo.com/f4d7ddd817169a4f90f8585c0c95146c.jpg" target="SwapGallery"><img src="https://i.gyazo.com/d4fccdb0ef8f1eb25478063f496c7187.jpg"></a>
+            </picture>
+        </div>
+    </div>
+    <div class="cs-item">
+        <div class="cs-picture-group">
+            <picture class="cs-picture">
+                <a href="https://i.gyazo.com/a2339f885baab8e8969be689663044df.jpg" target="SwapGallery"><img src="https://i.gyazo.com/ad5c1efe471ad5bf6e101d62303380c8.jpg"></a>
+            </picture>
+        </div>
+    </div>
+    <div class="cs-item">
+        <div class="cs-picture-group">
+            <picture class="cs-picture">
+                <a href="https://i.gyazo.com/0f5840038bdd42ceea42add524ae47fa.png" target="SwapGallery"><img src="https://i.gyazo.com/44796fcc418deede8c8935ccca6c9c87.png"></a>
+            </picture>
+        </div>
+    </div>
+    <div class="cs-item">
+        <div class="cs-picture-group">
+            <picture class="cs-picture">
+                <a href="https://i.gyazo.com/d599dc1621361a384a01e9bdf634813a.png" target="SwapGallery"><img src="https://i.gyazo.com/ac836dd5b5b2e76748d8f5fc2c1847eb.png"></a>
+            </picture>
+        </div>
+    </div>
+    <div class="cs-item">
+        <div class="cs-picture-group">
+            <picture class="cs-picture">
+                <a href="https://i.gyazo.com/0b6adccbdfb7376922cbadce93550de0.png" target="SwapGallery"><img src="https://i.gyazo.com/2ad34ad38f0694bcb1d6bc9c47f8db10.png"></a>
+            </picture>
+        </div>
+    </div>
+    <div class="cs-item">
+        <div class="cs-picture-group">
+            <picture class="cs-picture">
+                <a href="https://i.gyazo.com/51a6276f5aa1c91d36e53f15e6b3fed5.jpg" target="SwapGallery"><img src="https://i.gyazo.com/0afef56f11f6ce16138e81e0c18af0bd.jpg"></a>
+            </picture>
+        </div>
+    </div>
+    <div class="cs-item">
+        <div class="cs-picture-group">
+            <picture class="cs-picture">
+                <a href="https://i.gyazo.com/5f25a5867664a22be8be715745019c8b.png" target="SwapGallery"><img src="https://i.gyazo.com/8e87c617008bf08825b0f621a6165023.png"></a>
+            </picture>
+        </div>
+    </div>
+    <div class="cs-item">
+        <div class="cs-picture-group">
+            <picture class="cs-picture">
+                <a href="https://i.gyazo.com/b3d17aefec95fbc0e9c74bf4a1be2be5.jpg" target="SwapGallery"><img src="https://i.gyazo.com/5f667296073051e73a6ec3f14e8f4baf.jpg"></a>
+            </picture>
+        </div>
+    </div>
+    <div class="cs-item">
+        <div class="cs-picture-group">
+            <picture class="cs-picture">
+                <a href="https://i.gyazo.com/64db40d01a9ebcba925234642a526057.png" target="SwapGallery"><img src="https://i.gyazo.com/2ec71d9c5e651bc69faf3d15f98ff61f.png"></a>
+            </picture>
+        </div>
+    </div>
+    <div class="cs-item">
+        <div class="cs-picture-group">
+            <picture class="cs-picture">
+                <a href="https://i.gyazo.com/7aee35ddd3a9a7790364efd0c0b65bcd.png" target="SwapGallery"><img src="https://i.gyazo.com/ac8eb46fdd72c0357861953f009302af.png"></a>
+            </picture>
+        </div>
+    </div>
+    <div class="cs-item">
+        <div class="cs-picture-group">
+            <picture class="cs-picture">
+                <a href="https://i.gyazo.com/c900331fae3b262ec7b812b449ce7b6d.png" target="SwapGallery"><img src="https://i.gyazo.com/d10bbaee55affe76402050184d097d6b.png"></a>
+            </picture>
+        </div>
+    </div>
+    <div class="cs-item">
+        <div class="cs-picture-group">
+            <picture class="cs-picture">
+                <a href="https://i.gyazo.com/614750bd29f66670692dfd99f440bc0f.png" target="SwapGallery"><img src="https://i.gyazo.com/492289be086b307c9746320e1204d360.png"></a>
+            </picture>
+        </div>
+    </div>
+    <div class="cs-item">
+        <div class="cs-picture-group">
+            <picture class="cs-picture">
+                <a href="https://i.gyazo.com/696722db07d7c946eff29eb10cc8b7c0.png" target="SwapGallery"><img src="https://i.gyazo.com/8ed9dbe0ab2a819c7c35f03be84d18a2.png"></a>
+            </picture>
+        </div>
+    </div>
+    <div class="cs-item">
+        <div class="cs-picture-group">
+            <picture class="cs-picture">
+                <a href="https://i.gyazo.com/edc76d3cbc3bc6adc51b3ed3d79dc44c.png" target="SwapGallery"><img src="https://i.gyazo.com/fbf4e684c8277ad5680c5ca474dd5358.png"></a>
+            </picture>
+        </div>
+    </div>
+    <div class="cs-item">
+        <div class="cs-picture-group">
+            <picture class="cs-picture">
+                <a href="https://i.gyazo.com/6dcecd2fe99d3587fd03170f5da80608.png" target="SwapGallery"><img src="https://i.gyazo.com/dedee4064addc6cfa22ea394392a2a7a.png"></a>
+            </picture>
+        </div>
+    </div>
+    <div class="cs-item">
+        <div class="cs-picture-group">
+            <picture class="cs-picture">
+                <a href="https://i.gyazo.com/4ff5e745d661cf7ae00921bb67364750.png" target="SwapGallery"><img src="https://i.gyazo.com/323401bbbcfae2443a84a43a445bb05a.png"></a>
+            </picture>
+        </div>
+    </div>
+    <div class="cs-item">
+        <div class="cs-picture-group">
+            <picture class="cs-picture">
+                <a href="https://i.gyazo.com/bcc7c479451fb5b993153ec2f926caed.png" target="SwapGallery"><img src="https://i.gyazo.com/3257dfcc27ece08c237ae7622fc3ed24.png"></a>
+            </picture>
+        </div>
+    </div>
+    <div class="cs-item">
+        <div class="cs-picture-group">
+            <picture class="cs-picture">
+                <a href="https://i.gyazo.com/d6a72617309cc185cf624a9838b91d8d.jpg" target="SwapGallery"><img src="https://i.gyazo.com/2e90625d4891b74676cf6757a097fd9e.jpg"></a>
+            </picture>
+        </div>
+    </div>
+    <div class="cs-item">
+        <div class="cs-picture-group">
+            <picture class="cs-picture">
+                <a href="https://i.gyazo.com/d29b58ba3b101826d36cd80bc113d5b0.png" target="SwapGallery"><img src="https://i.gyazo.com/78dff6f879a867483ae0770ccc0a8172.png"></a>
+            </picture>
+        </div>
+    </div>
+    <div class="cs-item">
+        <div class="cs-picture-group">
+            <picture class="cs-picture">
+                <a href="https://i.gyazo.com/0c0423169d80683b2cf9a383d06184e6.png" target="SwapGallery"><img src="https://i.gyazo.com/255460eaa0a9f38191b621529c61bbd9.png"></a>
+            </picture>
+        </div>
+    </div>
 </div>
 
 </div>
@@ -490,7 +545,41 @@ body {font-family: "Playpen Sans";}
 </div>
 
 <script>
-// MODAL
+function openCity(evt, cityName) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+  document.getElementById(cityName).style.display = "block";
+  evt.currentTarget.className += " active";
+}
+
+// Get the element with id="defaultOpen" and click on it
+document.getElementById("defaultOpen").click();
+
+
+// Accordion
+var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var panel = this.nextElementSibling;
+    if (panel.style.display === "block") {
+      panel.style.display = "none";
+    } else {
+      panel.style.display = "block";
+    }
+  });
+}
+
+// Event delegation for all modal buttons
 document.addEventListener('click', function(event) {
   // Open modal when clicking buttons
   if (event.target.classList.contains('DescriptionButton')) {
