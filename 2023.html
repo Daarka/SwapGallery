@@ -2,7 +2,6 @@
 <head>
     <link href='https://fonts.googleapis.com/css?family=Playpen Sans' rel='stylesheet'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="https://kit.webawesome.com/1ef81a21a1f04111.js" crossorigin="anonymous"></script>
 <style>
 :root {
     /* Add these styles to your global stylesheet, which is used across all site pages. You only need to do this once. All elements in the library derive their variables and base styles from this central sheet, simplifying site-wide edits. For instance, if you want to modify how your h2's appear across the site, you just update it once in the global styles, and the changes apply everywhere. */
@@ -2249,63 +2248,9 @@ body {font-family: "Playpen Sans";}
 </section>
 </div>
 
-<script>
-function openCity(evt, cityName) {
-  var i, tabcontent, tablinks;
-  tabcontent = document.getElementsByClassName("tabcontent");
-  for (i = 0; i < tabcontent.length; i++) {
-    tabcontent[i].style.display = "none";
-  }
-  tablinks = document.getElementsByClassName("tablinks");
-  for (i = 0; i < tablinks.length; i++) {
-    tablinks[i].className = tablinks[i].className.replace(" active", "");
-  }
-  document.getElementById(cityName).style.display = "block";
-  evt.currentTarget.className += " active";
-}
-
-// Get the element with id="defaultOpen" and click on it
-document.getElementById("defaultOpen").click();
-
-
-// Accordion
-var acc = document.getElementsByClassName("accordion");
-var i;
-
-for (i = 0; i < acc.length; i++) {
-  acc[i].addEventListener("click", function() {
-    this.classList.toggle("active");
-    var panel = this.nextElementSibling;
-    if (panel.style.display === "block") {
-      panel.style.display = "none";
-    } else {
-      panel.style.display = "block";
-    }
-  });
-}
-
-// Event delegation for all modal buttons
-document.addEventListener('click', function(event) {
-  // Open modal when clicking buttons
-  if (event.target.classList.contains('DescriptionButton')) {
-    const modalId = event.target.getAttribute('data-modal');
-    const modal = document.getElementById(modalId);
-    modal.style.display = 'block';
-  }
-  
-  // Close modal when clicking close buttons
-  if (event.target.classList.contains('closeButton')) {
-    const modal = event.target.closest('.modal');
-    modal.style.display = 'none';
-  }
-  
-  // Close modal when clicking outside
-  if (event.target.classList.contains('modal')) {
-    event.target.style.display = 'none';
-  }
-});
-
-</script>
+<script src="fa.js"></script>
+<script src="modal.js"></script>
+<script src="tabs.js"></script>
 
 </body>
 </html>
