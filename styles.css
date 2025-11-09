@@ -485,3 +485,20 @@ body {font-family: "Playpen Sans";}
     margin-left: -10px;
     transform: none;
   }
+
+  .IGButton{
+    font-size: 0.875rem;
+    line-height: 1.3em;
+    font-family: 'Playpen Sans';
+    padding: 0.15rem 0.35rem;
+    background: #782b421c;
+    color: var(--textLightest);
+    border: 1px solid var(--outlineBrighter);
+    border-radius: 1.875rem;
+    backdrop-filter: blur(8px);
+    position: absolute;
+    bottom: 0.4rem;
+    left: 0.95rem;
+    margin-left: -10px;
+    transform: none;
+  }
