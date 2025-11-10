@@ -256,8 +256,8 @@ body {
     position: absolute;
     bottom: 14.8rem; 
     left: 0.3rem;
-   
-    backdrop-filter: blur(8px); */
+    */
+    backdrop-filter: blur(8px);
     position: absolute;
     top: 0.4rem;
     left: 0.95rem;
@@ -478,8 +478,8 @@ body {font-family: "Playpen Sans";}
     border-radius: 1.875rem; 
     /*
     bottom: 14.8rem; 
-   
-    backdrop-filter: blur(8px); */
+    */
+    backdrop-filter: blur(8px); 
     position: absolute;
     /*
     top: 0.4rem;
