@@ -277,7 +277,7 @@ body {
         display:inline-grid;
         aspect-ratio: 1;
         width: 100%;
-        max-width: 300px;
+        max-width: 270px;
         margin: -3;
         margin-top: -5;
     }
@@ -499,4 +499,8 @@ body {font-family: "Playpen Sans";}
     left: 0.75rem;
     margin-left: -10px;
     transform: none;
+  }
+
+  .IGButton a:hover {
+    color: var(--backgroundopaque);
   }
