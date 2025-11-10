@@ -256,8 +256,8 @@ body {
     position: absolute;
     bottom: 14.8rem; 
     left: 0.3rem;
-    */
-    backdrop-filter: blur(8px);
+   
+    backdrop-filter: blur(8px); */
     position: absolute;
     top: 0.4rem;
     left: 0.95rem;
@@ -269,6 +269,26 @@ body {
     text-decoration:none;
     }
 
+    /*  
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+    #gallery .cs-tag {
+    font-size: 0.875rem;
+    line-height: 1.3em;
+    font-family: 'Arial';
+    padding: 0.15rem 0.35rem;
+    background: var(--backgroundButton);
+    color: var(--textLightest);
+    border: 1px solid var(--outlineButton);
+    border-radius: 1.875rem;
+    backdrop-filter: none;
+    position: absolute;
+    top: 0.4rem;
+    left: 0.95rem;
+    margin-left: -10px;
+    transform: none;
+  }
+}
+*/
 }
 /* MOODBOARD VERSIONS */
     #gallery .cs-moodboarditem {
@@ -458,8 +478,8 @@ body {font-family: "Playpen Sans";}
     border-radius: 1.875rem; 
     /*
     bottom: 14.8rem; 
-    */
-    backdrop-filter: blur(8px);
+   
+    backdrop-filter: blur(8px); */
     position: absolute;
     /*
     top: 0.4rem;
@@ -478,7 +498,9 @@ body {font-family: "Playpen Sans";}
     color: var(--textLightest);
     border: 1px solid var(--outlineBrighter);
     border-radius: 1.875rem;
-    backdrop-filter: blur(8px);
+    /*
+    backdrop-filter: blur(8px); 
+    */
     position: absolute;
     bottom: 0.4rem;
     left: 0.95rem;
