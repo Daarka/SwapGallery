@@ -1,10 +1,9 @@
 :root {
-    /* Add these styles to your global stylesheet, which is used across all site pages. You only need to do this once. All elements in the library derive their variables and base styles from this central sheet, simplifying site-wide edits. For instance, if you want to modify how your h2's appear across the site, you just update it once in the global styles, and the changes apply everywhere. */
     --textLight: #782B42;
     --textLightest: #fff0e7;
     --textDark: #4B1C2C;
     --textButton: #fff9f0;
-    --backgroundClear: #FFFFFF00; /* FFFFFF00 */
+    --backgroundClear: #FFFFFF00;
     --backgroundColor: #FFEAC952;
     --backgroundColorSolid: #f5dbc3;
     --backgroundopaque: #e0beb0;
@@ -17,6 +16,8 @@
     --sidebarHighlight: #ECCCAF;
     --sidebarHighlightLess: #ecccaf7c;
     --Raspberry: #782B42;
+    --Wine: #861919;
+    --Blush: #f8dfd9;
     --textBrown: #66302c;
     /* 31px - 49px */
     --textsizeBig: clamp(1.9375rem, 3.9vw, 3.0625rem);
@@ -124,7 +125,6 @@ body {
   }
   #gallery .cs-gallery {
     width: 100%;
-    /* display: grid;*/
     grid-auto-flow: row;
     /* FULL PAGE GUTTERS */
     gap: 0;
@@ -139,7 +139,6 @@ body {
         justify-content: center;
         /*display: grid;*/
         display:inline-grid;
-        /* max-width: clamp(655px, 655px, 655px); */
         aspect-ratio: 1 / 0.52;
         width: 100%;
         max-width: 560px;
@@ -164,7 +163,6 @@ body {
         justify-content: center;
         /*display: grid;*/
         display:inline-grid;
-        /* max-width: clamp(655px, 655px, 655px); */
         aspect-ratio: 1 / 0.52;
         width: 100%;
         max-width: 100%;
@@ -187,7 +185,6 @@ body {
         box-shadow: 0 0 8px 2px var(--shadowColor); 
         justify-content: center;
         /*display: grid;*/
-        /* max-width: clamp(655px, 655px, 655px); */
         width: 100%;
         max-width: 100%;
         /* PADDING (CONTAINER) */
@@ -218,8 +215,6 @@ body {
     grid-column: span 2;
   }
   #gallery .cs-picture-group {
-    /* height: clamp(267px, 267px, 267px);
-    width: clamp(267px, 267px, 267px); */
     overflow: hidden;
     border-radius: 1rem;
     grid-column: span 1;
@@ -252,11 +247,6 @@ body {
     color: var(--textLightest);
     border: 1px solid var(--outlineButton);
     border-radius: 1.875rem;
-    /* 
-    position: absolute;
-    bottom: 14.8rem; 
-    left: 0.3rem;
-    */
     backdrop-filter: blur(8px);
     position: absolute;
     top: 0.4rem;
@@ -269,26 +259,6 @@ body {
     text-decoration:none;
     }
 
-    /*  
-@media screen and (-webkit-min-device-pixel-ratio:0) {
-    #gallery .cs-tag {
-    font-size: 0.875rem;
-    line-height: 1.3em;
-    font-family: 'Arial';
-    padding: 0.15rem 0.35rem;
-    background: var(--backgroundButton);
-    color: var(--textLightest);
-    border: 1px solid var(--outlineButton);
-    border-radius: 1.875rem;
-    backdrop-filter: none;
-    position: absolute;
-    top: 0.4rem;
-    left: 0.95rem;
-    margin-left: -10px;
-    transform: none;
-  }
-}
-*/
 }
 /* MOODBOARD VERSIONS */
     #gallery .cs-moodboarditem {
@@ -414,7 +384,6 @@ body {font-family: "Playpen Sans";}
   max-width: 750px;
   height: auto;
   border-radius: 1.875rem;
-  /* padding-left: 25px; */
   font-size: 0.95rem;
   color: var(--textDark);
 }
@@ -476,16 +445,8 @@ body {font-family: "Playpen Sans";}
     color: var(--textBrown);
     border: 1px solid var(--backgroundopaque);
     border-radius: 1.875rem; 
-    /*
-    bottom: 14.8rem; 
-    */
     backdrop-filter: blur(8px); 
     position: absolute;
-    /*
-    top: 0.4rem;
-    left: 0.95rem;
-    margin-left: -10px;
-    */
     transform: none;
   }
 
@@ -498,9 +459,7 @@ body {font-family: "Playpen Sans";}
     color: var(--textLightest);
     border: 1px solid var(--outlineBrighter);
     border-radius: 1.875rem;
-    /*
     backdrop-filter: blur(8px); 
-    */
     position: absolute;
     bottom: 0.4rem;
     left: 0.95rem;
@@ -514,15 +473,33 @@ body {font-family: "Playpen Sans";}
     font-family: 'Playpen Sans';
     padding: 0.15rem 0.35rem;
     background: none;
-    color: var(--textLightest);
     border: none;
     position: absolute;
     bottom: 0.1em;
     left: 0.75rem;
     margin-left: -10px;
     transform: none;
+    color: var(--textLightest);
+    text-shadow: 0 0 7px var(--Raspberry),
+                 0 0 5px var(--textDark);
+  }
+
+  .IGButtonMisc{
+    font-size: 3rem;
+    line-height: 1.3em;
+    font-family: 'Playpen Sans';
+    padding: 0.15rem 0.35rem;
+    background: none;
+    border: none;
+    position:relative;
+    transform: none;
+    color: var(--textLightest);
+    text-shadow: 0 0 7px var(--Raspberry),
+                 0 0 5px var(--textDark);
   }
 
   .IGButton a:hover {
-    color: var(--backgroundopaque);
+    color: var(--Blush);
+    text-shadow: 0 0 7px var(--Wine),
+                 0 0 5px var(--Wine);
   }
